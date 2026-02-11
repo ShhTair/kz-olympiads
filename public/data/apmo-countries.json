@@ -1,0 +1,98 @@
+{
+  "olympiadId": "asian-pacific",
+  "fullName": "Asian Pacific Mathematics Olympiad",
+  "isRegional": true,
+  "region": "Asia-Pacific",
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "2000-2025",
+      "totalParticipants": 325,
+      "totalMedals": {
+        "gold": 12,
+        "silver": 45,
+        "bronze": 88,
+        "honorableMention": 95
+      },
+      "bestRank": 8,
+      "bestRankYear": 2015,
+      "notableParticipants": [
+        {
+          "name": "Kanat Satylkhanov",
+          "nameRu": "Канат Сатылханов",
+          "years": [2010],
+          "medals": ["Gold 2010"],
+          "notes": "Later IMO 2010 gold medalist"
+        },
+        {
+          "name": "Akhan Ismailov",
+          "nameRu": "Ақан Исмаилов",
+          "years": [2014, 2015],
+          "medals": ["Gold 2014", "Gold 2015"],
+          "notes": "Later IMO 2014-2015 gold medalist"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "2005-2025",
+      "totalParticipants": 273,
+      "totalMedals": {
+        "gold": 8,
+        "silver": 35,
+        "bronze": 75,
+        "honorableMention": 85
+      },
+      "bestRank": 12,
+      "bestRankYear": 2018,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "KGZ": {
+      "countryCode": "KGZ",
+      "participationYears": "2005-2025",
+      "totalParticipants": 252,
+      "totalMedals": {
+        "gold": 4,
+        "silver": 22,
+        "bronze": 68,
+        "honorableMention": 95
+      },
+      "bestRank": 18,
+      "bestRankYear": 2017,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "TJK": {
+      "countryCode": "TJK",
+      "participationYears": "2008-2025",
+      "totalParticipants": 198,
+      "totalMedals": {
+        "gold": 2,
+        "silver": 15,
+        "bronze": 52,
+        "honorableMention": 75
+      },
+      "bestRank": 25,
+      "bestRankYear": 2019,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "1989-2025",
+      "totalParticipants": 936,
+      "totalMedals": {
+        "gold": 185,
+        "silver": 285,
+        "bronze": 265,
+        "honorableMention": 145
+      },
+      "bestRank": 1,
+      "bestRankYear": 2015,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    }
+  }
+}

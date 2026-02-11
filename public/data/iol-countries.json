@@ -1,0 +1,81 @@
+{
+  "olympiadId": "iol",
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "2010-2025",
+      "totalParticipants": 64,
+      "totalMedals": {
+        "gold": 2,
+        "silver": 12,
+        "bronze": 28,
+        "honorableMention": 15
+      },
+      "bestRank": 18,
+      "bestRankYear": 2019,
+      "notableParticipants": [
+        {
+          "name": "Samat Shamuratov",
+          "nameRu": "Самат Шамуратов",
+          "years": [2019],
+          "medals": ["Gold 2019"],
+          "notes": "IOL 2019 gold medalist"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "2003-2025",
+      "totalParticipants": 322,
+      "totalMedals": {
+        "gold": 78,
+        "silver": 112,
+        "bronze": 95,
+        "honorableMention": 30
+      },
+      "bestRank": 1,
+      "bestRankYear": 2015,
+      "notableParticipants": [
+        {
+          "name": "Boris Iomdin",
+          "nameRu": "Борис Иомдин",
+          "years": [2005, 2006],
+          "medals": ["Gold 2005", "Gold 2006"],
+          "notes": "2-time gold medalist, later linguist"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "2012-2025",
+      "totalParticipants": 56,
+      "totalMedals": {
+        "gold": 1,
+        "silver": 8,
+        "bronze": 22,
+        "honorableMention": 18
+      },
+      "bestRank": 25,
+      "bestRankYear": 2018,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "ARM": {
+      "countryCode": "ARM",
+      "participationYears": "2012-2025",
+      "totalParticipants": 56,
+      "totalMedals": {
+        "gold": 2,
+        "silver": 10,
+        "bronze": 20,
+        "honorableMention": 16
+      },
+      "bestRank": 15,
+      "bestRankYear": 2017,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    }
+  }
+}

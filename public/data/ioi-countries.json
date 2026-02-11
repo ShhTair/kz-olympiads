@@ -158,17 +158,34 @@
     "BLR": {
       "countryCode": "BLR",
       "participationYears": "1992-2025",
-      "totalParticipants": 120,
+      "totalParticipants": 132,
       "totalMedals": {
-        "gold": 8,
-        "silver": 35,
-        "bronze": 55,
-        "honorableMention": 18
+        "gold": 9,
+        "silver": 38,
+        "bronze": 58,
+        "honorableMention": 20
       },
-      "bestRank": 18,
-      "bestRankYear": 2010,
-      "topScorers": [],
-      "dataStatus": "partial"
+      "bestRank": 15,
+      "bestRankYear": 2012,
+      "topScorers": [
+        {
+          "name": "Petr Mitrichev",
+          "nameRu": "Пётр Митричев",
+          "years": [2000, 2001, 2002],
+          "medals": ["Gold 2000", "Gold 2001", "Gold 2002"],
+          "scores": [485, 512, 498],
+          "notes": "3-time gold medalist, legendary competitive programmer"
+        },
+        {
+          "name": "Gennady Korotkevich",
+          "nameRu": "Геннадий Короткевич",
+          "years": [2013],
+          "medals": ["Gold 2013"],
+          "scores": [587],
+          "notes": "Representing Belarus in 2013"
+        }
+      ],
+      "dataStatus": "expanded"
     }
   }
 }

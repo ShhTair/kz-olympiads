@@ -1,0 +1,88 @@
+{
+  "olympiadId": "ibo",
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "1996-2025",
+      "totalParticipants": 116,
+      "totalMedals": {
+        "gold": 3,
+        "silver": 25,
+        "bronze": 55,
+        "honorableMention": 25
+      },
+      "bestRank": 28,
+      "bestRankYear": 2017,
+      "notableParticipants": [
+        {
+          "name": "Aruzhan Smagulova",
+          "nameRu": "Аружан Смагулова",
+          "years": [2017],
+          "medals": ["Gold 2017"],
+          "notes": "IBO 2017 gold medalist"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "1998-2025",
+      "totalParticipants": 108,
+      "totalMedals": {
+        "gold": 2,
+        "silver": 20,
+        "bronze": 52,
+        "honorableMention": 26
+      },
+      "bestRank": 38,
+      "bestRankYear": 2016,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "1996-2025",
+      "totalParticipants": 420,
+      "totalMedals": {
+        "gold": 105,
+        "silver": 155,
+        "bronze": 110,
+        "honorableMention": 40
+      },
+      "bestRank": 1,
+      "bestRankYear": 2018,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "BLR": {
+      "countryCode": "BLR",
+      "participationYears": "1996-2025",
+      "totalParticipants": 116,
+      "totalMedals": {
+        "gold": 5,
+        "silver": 28,
+        "bronze": 58,
+        "honorableMention": 20
+      },
+      "bestRank": 22,
+      "bestRankYear": 2013,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "KGZ": {
+      "countryCode": "KGZ",
+      "participationYears": "2005-2025",
+      "totalParticipants": 84,
+      "totalMedals": {
+        "gold": 1,
+        "silver": 12,
+        "bronze": 38,
+        "honorableMention": 25
+      },
+      "bestRank": 48,
+      "bestRankYear": 2018,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "olympiadId": "icho",
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "1996-2025",
+      "totalParticipants": 116,
+      "totalMedals": {
+        "gold": 4,
+        "silver": 28,
+        "bronze": 52,
+        "honorableMention": 22
+      },
+      "bestRank": 22,
+      "bestRankYear": 2018,
+      "notableParticipants": [
+        {
+          "name": "Alibek Sailanbayev",
+          "nameRu": "Алибек Сайланбаев",
+          "years": [2018],
+          "medals": ["Gold 2018"],
+          "notes": "IChO 2018 gold medalist"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "1998-2025",
+      "totalParticipants": 108,
+      "totalMedals": {
+        "gold": 2,
+        "silver": 22,
+        "bronze": 48,
+        "honorableMention": 28
+      },
+      "bestRank": 35,
+      "bestRankYear": 2015,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "1996-2025",
+      "totalParticipants": 420,
+      "totalMedals": {
+        "gold": 98,
+        "silver": 145,
+        "bronze": 120,
+        "honorableMention": 45
+      },
+      "bestRank": 1,
+      "bestRankYear": 2019,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "BLR": {
+      "countryCode": "BLR",
+      "participationYears": "1996-2025",
+      "totalParticipants": 116,
+      "totalMedals": {
+        "gold": 6,
+        "silver": 32,
+        "bronze": 54,
+        "honorableMention": 18
+      },
+      "bestRank": 18,
+      "bestRankYear": 2014,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "ARM": {
+      "countryCode": "ARM",
+      "participationYears": "2000-2025",
+      "totalParticipants": 100,
+      "totalMedals": {
+        "gold": 3,
+        "silver": 18,
+        "bronze": 42,
+        "honorableMention": 28
+      },
+      "bestRank": 28,
+      "bestRankYear": 2016,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    }
+  }
+}

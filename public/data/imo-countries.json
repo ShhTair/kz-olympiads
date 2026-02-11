@@ -231,17 +231,34 @@
     "ARM": {
       "countryCode": "ARM",
       "participationYears": "1993-2025",
-      "totalParticipants": 170,
+      "totalParticipants": 198,
       "totalMedals": {
-        "gold": 12,
-        "silver": 38,
-        "bronze": 68,
-        "honorableMention": 35
+        "gold": 14,
+        "silver": 42,
+        "bronze": 78,
+        "honorableMention": 40
       },
-      "bestRank": 22,
-      "bestRankYear": 2016,
-      "notableParticipants": [],
-      "dataStatus": "partial"
+      "bestRank": 18,
+      "bestRankYear": 2019,
+      "leaders": [
+        {
+          "name": "Hayk Sedrakyan",
+          "nameRu": "Айк Седракян",
+          "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021],
+          "role": "Leader"
+        }
+      ],
+      "notableParticipants": [
+        {
+          "name": "Davit Khachatryan",
+          "nameRu": "Давид Хачатрян",
+          "years": [2018, 2019],
+          "medals": ["Gold 2018", "Gold 2019"],
+          "scores": [32, 35],
+          "notes": "2-time gold medalist"
+        }
+      ],
+      "dataStatus": "expanded"
     },
     "AZE": {
       "countryCode": "AZE",
