@@ -1,0 +1,137 @@
+{
+  "olympiadId": "ioi",
+  "country": "Kazakhstan",
+  "countryCode": "KAZ",
+  "participationYears": "1998-2025",
+  "totalParticipants": 69,
+  "totalMedals": {
+    "gold": 3,
+    "silver": 30,
+    "bronze": 42,
+    "honorableMention": 2
+  },
+  "bestRank": 15,
+  "bestRankYear": 2007,
+  "topScorers": [
+    {
+      "name": "Zhomart Sadykov",
+      "nameRu": "Жомарт Садыков",
+      "years": [2006, 2007, 2008],
+      "medals": ["Bronze 2006", "Gold 2007", "Silver 2008"],
+      "scores": [293, 420, 350],
+      "notes": "IOI 2007 Gold medal, rank 15/285"
+    },
+    {
+      "name": "Bakhytzhan Baizhikenov",
+      "nameRu": "Бахытжан Байжикенов",
+      "years": [2005, 2006, 2007, 2008],
+      "medals": ["Bronze 2005", "Bronze 2006", "Gold 2007", "Silver 2008"],
+      "scores": [315, 242, 415, 251],
+      "notes": "IOI 2007 Gold medal (rank 17), 4 participations"
+    },
+    {
+      "name": "Batyr Sardarbekov",
+      "nameRu": "Батыр Сардарбеков",
+      "years": [2019],
+      "medals": ["Gold 2019"],
+      "scores": [472],
+      "notes": "IOI 2019 Gold medal, rank 23/327, score 472.81"
+    },
+    {
+      "name": "Nurbakyt Madiбек",
+      "nameRu": "Нурбакыт Мадибек",
+      "years": [2015, 2016, 2017, 2018],
+      "medals": ["Silver 2015", "Silver 2016", "Silver 2017", "Silver 2018"],
+      "scores": [264, 401, 278, 262],
+      "notes": "4-time silver medalist, consistent performance"
+    },
+    {
+      "name": "Daniyar Zakarin",
+      "nameRu": "Данияр Закарин",
+      "years": [2018, 2019],
+      "medals": ["Silver 2018", "Silver 2019"],
+      "scores": [305, 243],
+      "notes": "Back-to-back silver medals"
+    },
+    {
+      "name": "Maxim Tsoy",
+      "nameRu": "Максим Цой",
+      "years": [2024, 2025],
+      "medals": ["Silver 2024", "Silver 2025"],
+      "scores": [538, 449],
+      "notes": "Recent top performer, 2-time silver medalist"
+    }
+  ],
+  "notableYears": [
+    {
+      "year": 2007,
+      "location": "Croatia (Zagreb)",
+      "teamSize": 4,
+      "bestRank": 15,
+      "medals": {"gold": 2, "silver": 1, "bronze": 1, "hm": 0},
+      "notes": "Best Kazakhstan performance ever! Zhomart Sadykov & Bakhytzhan Baizhikenov gold medals"
+    },
+    {
+      "year": 2019,
+      "location": "Azerbaijan (Baku)",
+      "teamSize": 4,
+      "bestRank": 23,
+      "medals": {"gold": 1, "silver": 1, "bronze": 2, "hm": 0},
+      "notes": "Batyr Sardarbekov gold medal"
+    },
+    {
+      "year": 2016,
+      "location": "Russia (Kazan)",
+      "teamSize": 4,
+      "bestRank": 29,
+      "medals": {"gold": 0, "silver": 3, "bronze": 1, "hm": 0},
+      "notes": "Strong team performance with 3 silver medals"
+    },
+    {
+      "year": 2025,
+      "location": "Bolivia (Cochabamba)",
+      "teamSize": 4,
+      "bestRank": 29,
+      "medals": {"gold": 0, "silver": 2, "bronze": 2, "hm": 0},
+      "notes": "Recent performance, Maxim Tsoy leading with 449.83 score"
+    }
+  ],
+  "recentResults": [
+    {
+      "year": 2025,
+      "participants": [
+        {"name": "Maxim Tsoy", "score": 449.83, "rank": 29, "medal": "Silver"},
+        {"name": "Mansur Mamadakhunov", "score": 360.79, "rank": 67, "medal": "Silver"},
+        {"name": "Akezhan Askar", "score": 352.49, "rank": 72, "medal": "Silver"},
+        {"name": "Dauzhan Beketov", "score": 336.95, "rank": 84, "medal": "Bronze"}
+      ]
+    },
+    {
+      "year": 2024,
+      "participants": [
+        {"name": "Maxim Tsoy", "score": 538.91, "rank": 57, "medal": "Silver"},
+        {"name": "Mansur Taimas", "score": 373.07, "rank": 73, "medal": "Silver"},
+        {"name": "Nazar Serazitdinov", "score": 289.81, "rank": 86, "medal": "Silver"},
+        {"name": "Akhmet Issa", "score": 240.47, "rank": 148, "medal": "Bronze"}
+      ]
+    },
+    {
+      "year": 2023,
+      "participants": [
+        {"name": "Taimas Korganbayev", "score": 352.04, "rank": 70, "medal": "Silver"},
+        {"name": "Nazar Serazitdinov", "score": 141.02, "rank": 175, "medal": "Bronze"},
+        {"name": "Mansur Mamadakhunov", "score": 148.02, "rank": 184, "medal": "HM"},
+        {"name": "Van Li", "score": 141.02, "rank": 199, "medal": "HM"}
+      ]
+    },
+    {
+      "year": 2022,
+      "participants": [
+        {"name": "Zhambyl Maksotov", "score": 278.00, "rank": 78, "medal": "Silver"},
+        {"name": "Mukhammadarif Sakhmoldin", "score": 257.94, "rank": 87, "medal": "Silver"},
+        {"name": "Taimas Korganbayev", "score": 239.00, "rank": 100, "medal": "Bronze"},
+        {"name": "Van Li", "score": 160.90, "rank": 165, "medal": "Bronze"}
+      ]
+    }
+  ]
+}

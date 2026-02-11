@@ -61,23 +61,23 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow p-6 card-hover">
                 <div class="text-sm text-gray-600 mb-1">Олимпиад в базе</div>
-                <div class="text-3xl font-bold text-purple-600">12</div>
-                <div class="text-xs text-gray-500 mt-1">IMO, IOI, IPhO и др.</div>
+                <div class="text-3xl font-bold text-purple-600">20+</div>
+                <div class="text-xs text-gray-500 mt-1">IMO, IOI, IPhO, ICPC и др.</div>
             </div>
             <div class="bg-white rounded-lg shadow p-6 card-hover">
                 <div class="text-sm text-gray-600 mb-1">Участников</div>
-                <div class="text-3xl font-bold text-blue-600">195+</div>
-                <div class="text-xs text-gray-500 mt-1">1993-2025 (IMO)</div>
+                <div class="text-3xl font-bold text-blue-600">400+</div>
+                <div class="text-xs text-gray-500 mt-1">IMO (195), IOI (69), IPhO (150+)</div>
             </div>
             <div class="bg-white rounded-lg shadow p-6 card-hover">
                 <div class="text-sm text-gray-600 mb-1">Золотых медалей</div>
-                <div class="text-3xl font-bold text-yellow-500">15+</div>
-                <div class="text-xs text-gray-500 mt-1">Только IMO</div>
+                <div class="text-3xl font-bold text-yellow-500">23+</div>
+                <div class="text-xs text-gray-500 mt-1">IMO (15), IOI (3), IPhO (5+)</div>
             </div>
             <div class="bg-white rounded-lg shadow p-6 card-hover">
-                <div class="text-sm text-gray-600 mb-1">Лучший ранг</div>
-                <div class="text-3xl font-bold text-green-600">#5</div>
-                <div class="text-xs text-gray-500 mt-1">IMO 2010 (Астана)</div>
+                <div class="text-sm text-gray-600 mb-1">Лучшие ранги</div>
+                <div class="text-3xl font-bold text-green-600">#5 / #15</div>
+                <div class="text-xs text-gray-500 mt-1">IMO'10 (Астана) / IOI'07</div>
             </div>
         </div>
 
@@ -89,10 +89,18 @@
             </div>
         </div>
 
-        <!-- Notable Participants -->
+        <!-- Notable Participants IMO -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-6">⭐ Выдающиеся Участники (IMO)</h2>
+            <h2 class="text-2xl font-bold mb-6">⭐ Выдающиеся Участники IMO (Математика)</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="notableParticipants">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+
+        <!-- Notable Participants IOI -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-6">💻 Выдающиеся Участники IOI (Информатика)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="notableParticipantsIOI">
                 <!-- Will be populated by JS -->
             </div>
         </div>
@@ -128,22 +136,61 @@
         // Data will be loaded from JSON files
         let olympiadsData = [];
         let imoData = null;
+        let ioiData = null;
+        let iphoData = null;
 
         // Load data
         async function loadData() {
             try {
-                const olympiadsRes = await fetch('../data/olympiads-list.json');
+                const olympiadsRes = await fetch('/data/olympiads-list.json');
                 olympiadsData = await olympiadsRes.json();
                 
-                const imoRes = await fetch('../data/imo-kazakhstan.json');
+                const imoRes = await fetch('/data/imo-kazakhstan.json');
                 imoData = await imoRes.json();
+                
+                try {
+                    const ioiRes = await fetch('/data/ioi-kazakhstan.json');
+                    ioiData = await ioiRes.json();
+                } catch (e) { console.log('IOI data not loaded'); }
+                
+                try {
+                    const iphoRes = await fetch('/data/ipho-kazakhstan.json');
+                    iphoData = await iphoRes.json();
+                } catch (e) { console.log('IPhO data not loaded'); }
                 
                 renderOlympiads();
                 renderNotableParticipants();
+                renderNotableParticipantsIOI();
                 renderLeaders();
             } catch (error) {
                 console.error('Error loading data:', error);
             }
+        }
+
+        function renderNotableParticipantsIOI() {
+            if (!ioiData) return;
+            const container = document.getElementById('notableParticipantsIOI');
+            container.innerHTML = ioiData.topScorers.map(p => `
+                <div class="border border-gray-200 rounded-lg p-4 card-hover">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-semibold text-gray-900">${p.name}</div>
+                            <div class="text-sm text-gray-600">${p.nameRu}</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-gray-500">${p.years.join(', ')}</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1 mb-2">
+                        ${p.medals.map(m => {
+                            const color = m.includes('Gold') ? 'yellow' : m.includes('Silver') ? 'gray' : 'orange';
+                            return `<span class="px-2 py-1 bg-${color}-100 text-${color}-700 text-xs rounded">${m}</span>`;
+                        }).join('')}
+                    </div>
+                    ${p.notes ? `<div class="text-xs text-gray-500 mt-2">${p.notes}</div>` : ''}
+                    <div class="text-xs text-blue-600 mt-2">Scores: ${p.scores.join(', ')}</div>
+                </div>
+            `).join('');
         }
 
         function renderOlympiads() {
@@ -239,6 +286,19 @@
                             l.nameRu.toLowerCase().includes(searchTerm)
                         )
                         .map(l => ({ type: 'leader', data: l, olympiad: 'IMO' }))
+                    );
+                }
+            }
+
+            // Search in IOI data
+            if (!olympiadFilter || olympiadFilter === 'ioi') {
+                if (searchTerm) {
+                    results.push(...(ioiData?.topScorers || [])
+                        .filter(p => 
+                            p.name.toLowerCase().includes(searchTerm) || 
+                            p.nameRu.toLowerCase().includes(searchTerm)
+                        )
+                        .map(p => ({ type: 'participant', data: p, olympiad: 'IOI' }))
                     );
                 }
             }
