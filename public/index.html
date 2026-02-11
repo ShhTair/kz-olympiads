@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Олимпиадники Казахстана | Kazakhstan Olympiad Database</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div class="gradient-bg text-white py-12 mb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-4xl font-bold mb-2">🏆 Олимпиадники Казахстана</h1>
+            <p class="text-xl opacity-90">База данных участников международных олимпиад Республики Казахстан (2006-2026)</p>
+            <p class="text-sm mt-2 opacity-75">Kazakhstan International Olympiad Database</p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 pb-12">
+        <!-- Search Bar -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1">
+                    <input
+                        id="searchInput"
+                        type="text"
+                        placeholder="Поиск по имени участника, лидера или олимпиаде..."
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                        oninput="performSearch()"
+                    />
+                </div>
+                <div class="flex gap-2">
+                    <select id="olympiadFilter" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" onchange="performSearch()">
+                        <option value="">Все олимпиады</option>
+                        <option value="imo">IMO - Математика</option>
+                        <option value="ioi">IOI - Информатика</option>
+                        <option value="ipho">IPhO - Физика</option>
+                        <option value="icho">IChO - Химия</option>
+                        <option value="ibo">IBO - Биология</option>
+                        <option value="iol">IOL - Лингвистика</option>
+                    </select>
+                    <select id="yearFilter" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" onchange="performSearch()">
+                        <option value="">Все годы</option>
+                        <option value="2020-2026">2020-2026</option>
+                        <option value="2015-2019">2015-2019</option>
+                        <option value="2010-2014">2010-2014</option>
+                        <option value="2006-2009">2006-2009</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow p-6 card-hover">
+                <div class="text-sm text-gray-600 mb-1">Олимпиад в базе</div>
+                <div class="text-3xl font-bold text-purple-600">12</div>
+                <div class="text-xs text-gray-500 mt-1">IMO, IOI, IPhO и др.</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6 card-hover">
+                <div class="text-sm text-gray-600 mb-1">Участников</div>
+                <div class="text-3xl font-bold text-blue-600">195+</div>
+                <div class="text-xs text-gray-500 mt-1">1993-2025 (IMO)</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6 card-hover">
+                <div class="text-sm text-gray-600 mb-1">Золотых медалей</div>
+                <div class="text-3xl font-bold text-yellow-500">15+</div>
+                <div class="text-xs text-gray-500 mt-1">Только IMO</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6 card-hover">
+                <div class="text-sm text-gray-600 mb-1">Лучший ранг</div>
+                <div class="text-3xl font-bold text-green-600">#5</div>
+                <div class="text-xs text-gray-500 mt-1">IMO 2010 (Астана)</div>
+            </div>
+        </div>
+
+        <!-- Olympiads List -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-6">📚 Международные Олимпиады</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="olympiadsList">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+
+        <!-- Notable Participants -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-6">⭐ Выдающиеся Участники (IMO)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="notableParticipants">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+
+        <!-- Leaders -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-6">👨‍🏫 Лидеры и Тренеры (IMO)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="leadersList">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        <div id="searchResults" class="hidden">
+            <h2 class="text-2xl font-bold mb-6">🔍 Результаты Поиска</h2>
+            <div id="searchResultsContent"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-12 text-center text-gray-600 text-sm">
+            <p>База данных собрана с официальных сайтов международных олимпиад</p>
+            <p class="mt-2">
+                <a href="https://www.imo-official.org/" target="_blank" class="text-purple-600 hover:underline">IMO Official</a> •
+                <a href="https://ioinformatics.org/" target="_blank" class="text-purple-600 hover:underline">IOI Official</a> •
+                <a href="https://ipho-official.org/" target="_blank" class="text-purple-600 hover:underline">IPhO Official</a>
+            </p>
+            <p class="mt-4 text-xs">Создано для организаторов олимпиадных мероприятий в Казахстане</p>
+            <p class="text-xs text-gray-500 mt-1">2006-2026 • v1.0</p>
+        </div>
+    </div>
+
+    <script>
+        // Data will be loaded from JSON files
+        let olympiadsData = [];
+        let imoData = null;
+
+        // Load data
+        async function loadData() {
+            try {
+                const olympiadsRes = await fetch('../data/olympiads-list.json');
+                olympiadsData = await olympiadsRes.json();
+                
+                const imoRes = await fetch('../data/imo-kazakhstan.json');
+                imoData = await imoRes.json();
+                
+                renderOlympiads();
+                renderNotableParticipants();
+                renderLeaders();
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        }
+
+        function renderOlympiads() {
+            const container = document.getElementById('olympiadsList');
+            container.innerHTML = olympiadsData.map(o => `
+                <div class="border border-gray-200 rounded-lg p-4 card-hover cursor-pointer" onclick="selectOlympiad('${o.id}')">
+                    <div class="font-semibold text-gray-900">${o.id.toUpperCase()}</div>
+                    <div class="text-sm text-gray-700 mt-1">${o.nameRu}</div>
+                    <div class="text-xs text-gray-500 mt-2">${o.subject}</div>
+                    <div class="flex flex-wrap gap-1 mt-2">
+                        ${o.tags.map(tag => `<span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">${tag}</span>`).join('')}
+                    </div>
+                    ${o.kazParticipationStart ? `<div class="text-xs text-gray-400 mt-2">Казахстан с ${o.kazParticipationStart}</div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function renderNotableParticipants() {
+            if (!imoData) return;
+            const container = document.getElementById('notableParticipants');
+            container.innerHTML = imoData.notableParticipants.map(p => `
+                <div class="border border-gray-200 rounded-lg p-4 card-hover">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-semibold text-gray-900">${p.name}</div>
+                            <div class="text-sm text-gray-600">${p.nameRu}</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-gray-500">${p.years.join(', ')}</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1 mb-2">
+                        ${p.medals.map(m => {
+                            const color = m.includes('Gold') ? 'yellow' : m.includes('Silver') ? 'gray' : 'orange';
+                            return `<span class="px-2 py-1 bg-${color}-100 text-${color}-700 text-xs rounded">${m}</span>`;
+                        }).join('')}
+                    </div>
+                    ${p.notes ? `<div class="text-xs text-gray-500 mt-2">${p.notes}</div>` : ''}
+                    <div class="text-xs text-purple-600 mt-2">Scores: ${p.scores.join(', ')}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderLeaders() {
+            if (!imoData) return;
+            const container = document.getElementById('leadersList');
+            container.innerHTML = imoData.leaders.map(l => `
+                <div class="border border-gray-200 rounded-lg p-4 card-hover">
+                    <div class="font-semibold text-gray-900">${l.name}</div>
+                    <div class="text-sm text-gray-600">${l.nameRu}</div>
+                    <div class="text-xs text-purple-600 mt-2">${l.role}</div>
+                    <div class="text-xs text-gray-500 mt-1">${l.years.length} лет: ${l.years.join(', ')}</div>
+                    ${l.notes ? `<div class="text-xs text-gray-400 mt-2">${l.notes}</div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function selectOlympiad(id) {
+            document.getElementById('olympiadFilter').value = id;
+            performSearch();
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const olympiadFilter = document.getElementById('olympiadFilter').value;
+            const yearFilter = document.getElementById('yearFilter').value;
+
+            if (!searchTerm && !olympiadFilter && !yearFilter) {
+                document.getElementById('searchResults').classList.add('hidden');
+                return;
+            }
+
+            document.getElementById('searchResults').classList.remove('hidden');
+            
+            let results = [];
+            
+            // Search in IMO data
+            if (!olympiadFilter || olympiadFilter === 'imo') {
+                if (searchTerm) {
+                    // Search participants
+                    results.push(...(imoData?.notableParticipants || [])
+                        .filter(p => 
+                            p.name.toLowerCase().includes(searchTerm) || 
+                            p.nameRu.toLowerCase().includes(searchTerm)
+                        )
+                        .map(p => ({ type: 'participant', data: p, olympiad: 'IMO' }))
+                    );
+                    
+                    // Search leaders
+                    results.push(...(imoData?.leaders || [])
+                        .filter(l => 
+                            l.name.toLowerCase().includes(searchTerm) || 
+                            l.nameRu.toLowerCase().includes(searchTerm)
+                        )
+                        .map(l => ({ type: 'leader', data: l, olympiad: 'IMO' }))
+                    );
+                }
+            }
+
+            renderSearchResults(results);
+        }
+
+        function renderSearchResults(results) {
+            const container = document.getElementById('searchResultsContent');
+            
+            if (results.length === 0) {
+                container.innerHTML = '<div class="text-gray-500 text-center py-8">Ничего не найдено</div>';
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="text-sm text-gray-600 mb-4">Найдено результатов: ${results.length}</div>
+                    <div class="space-y-4">
+                        ${results.map(r => {
+                            if (r.type === 'participant') {
+                                return `
+                                    <div class="border-l-4 border-purple-500 pl-4 py-2">
+                                        <div class="font-semibold">${r.data.name} (${r.data.nameRu})</div>
+                                        <div class="text-sm text-gray-600">${r.olympiad} • ${r.data.years.join(', ')}</div>
+                                        <div class="text-sm text-gray-500 mt-1">${r.data.medals.join(', ')}</div>
+                                        ${r.data.notes ? `<div class="text-xs text-gray-400 mt-1">${r.data.notes}</div>` : ''}
+                                    </div>
+                                `;
+                            } else if (r.type === 'leader') {
+                                return `
+                                    <div class="border-l-4 border-blue-500 pl-4 py-2">
+                                        <div class="font-semibold">${r.data.name} (${r.data.nameRu})</div>
+                                        <div class="text-sm text-gray-600">${r.olympiad} • ${r.data.role}</div>
+                                        <div class="text-sm text-gray-500 mt-1">${r.data.years.length} лет: ${r.data.years.join(', ')}</div>
+                                        ${r.data.notes ? `<div class="text-xs text-gray-400 mt-1">${r.data.notes}</div>` : ''}
+                                    </div>
+                                `;
+                            }
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>

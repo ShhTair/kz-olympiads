@@ -1,0 +1,12 @@
+{
+  "name": "kz-olympiads",
+  "version": "1.0.0",
+  "description": "Kazakhstan International Olympiad Database - База данных олимпиадников Казахстана",
+  "scripts": {
+    "dev": "npx serve public",
+    "build": "echo 'Static site, no build needed'"
+  },
+  "keywords": ["kazakhstan", "olympiad", "imo", "ioi", "ipho", "education"],
+  "author": "Tair Shaizada",
+  "license": "MIT"
+}
