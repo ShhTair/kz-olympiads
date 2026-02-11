@@ -58,12 +58,55 @@
                     </select>
                     <select id="olympiadFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" onchange="performSearch()">
                         <option value="">Все олимпиады</option>
-                        <option value="imo">IMO - Математика</option>
-                        <option value="ioi">IOI - Информатика</option>
-                        <option value="ipho">IPhO - Физика</option>
-                        <option value="icho">IChO - Химия</option>
-                        <option value="ibo">IBO - Биология</option>
-                        <option value="iol">IOL - Лингвистика</option>
+                        <optgroup label="Основные (I-префикс)">
+                            <option value="imo">IMO - Математика</option>
+                            <option value="ioi">IOI - Информатика</option>
+                            <option value="ipho">IPhO - Физика</option>
+                            <option value="icho">IChO - Химия</option>
+                            <option value="ibo">IBO - Биология</option>
+                            <option value="iol">IOL - Лингвистика</option>
+                            <option value="iao">IAO - Астрономия</option>
+                            <option value="igeo">IGeO - География</option>
+                            <option value="ieso">IESO - Науки о Земле</option>
+                            <option value="ijso">IJSO - Естественные науки (юниоры)</option>
+                            <option value="ieo">IEO - Экономика</option>
+                            <option value="iphilo">IPhilO - Философия</option>
+                        </optgroup>
+                        <optgroup label="Новые">
+                            <option value="ioai">IOAI - Искусственный интеллект</option>
+                            <option value="ioi-girls">EGOI - Информатика (девушки)</option>
+                        </optgroup>
+                        <optgroup label="Студенческие">
+                            <option value="icpc">ICPC - Программирование (университеты)</option>
+                        </optgroup>
+                        <optgroup label="Региональные (Азия)">
+                            <option value="zhautykov">Жаутыковская - Математика/Физика</option>
+                            <option value="asian-pacific">APMO - Математика (Азия-Тихоокеанский регион)</option>
+                            <option value="apho">APhO - Физика (Азия)</option>
+                            <option value="apcho">APChO - Химия (Азия-Тихоокеанский регион)</option>
+                            <option value="silk-road">Шёлковый путь - Математика</option>
+                        </optgroup>
+                        <optgroup label="Региональные (Европа)">
+                            <option value="boi">BOI - Информатика (Балтия)</option>
+                            <option value="ceoi">CEOI - Информатика (Центральная Европа)</option>
+                            <option value="european-girls-mo">EGMO - Математика (девушки)</option>
+                            <option value="junior-balkan-mo">Балканская юниорская - Математика</option>
+                        </optgroup>
+                        <optgroup label="Региональные (Россия)">
+                            <option value="mendeleev">Менделеевская - Химия</option>
+                            <option value="turanga-science">Туймаада - Математика/Химия</option>
+                            <option value="lomonosov">Турнир Ломоносова - Многопрофильный</option>
+                            <option value="rosolymp-math">Всероссийская - Математика</option>
+                        </optgroup>
+                        <optgroup label="Мегаполисов">
+                            <option value="iwymic">Конкурс городов - Математика (юниоры)</option>
+                            <option value="iwymic-senior">Олимпиада мегаполисов - Математика/Информатика</option>
+                            <option value="iwymic-physics">Олимпиада мегаполисов - Физика</option>
+                        </optgroup>
+                        <optgroup label="Национальные">
+                            <option value="nazarbayev-olympiad">Олимпиада НИШ - Многопрофильная (Казахстан)</option>
+                            <option value="acm-icpc-regional">ACM ICPC Regional - Программирование (ЦА)</option>
+                        </optgroup>
                     </select>
                     <select id="yearFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" onchange="performSearch()">
                         <option value="">Все годы</option>
@@ -80,8 +123,8 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow p-6 card-hover">
                 <div class="text-sm text-gray-600 mb-1">Олимпиад в базе</div>
-                <div class="text-3xl font-bold text-purple-600">20+</div>
-                <div class="text-xs text-gray-500 mt-1">IMO, IOI, IPhO, ICPC и др.</div>
+                <div class="text-3xl font-bold text-purple-600">34</div>
+                <div class="text-xs text-gray-500 mt-1">Международные + региональные</div>
             </div>
             <div class="bg-white rounded-lg shadow p-6 card-hover">
                 <div class="text-sm text-gray-600 mb-1">Стран</div>
