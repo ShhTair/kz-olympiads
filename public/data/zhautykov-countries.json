@@ -1,0 +1,81 @@
+{
+  "olympiadId": "zhautykov",
+  "isRegional": true,
+  "isKazakhstanOwned": true,
+  "subjects": ["Mathematics", "Physics"],
+  "ageGroup": "Junior (Grades 7-9)",
+  "format": "Team competition",
+  "notes": "International Olympiad named after O.A. Zhautykov, organized annually in Kazakhstan. Focuses on junior students from CIS countries and beyond.",
+  "participatingCountries": [
+    "Kazakhstan",
+    "Russia", 
+    "Uzbekistan",
+    "Kyrgyzstan",
+    "Tajikistan",
+    "Turkmenistan",
+    "Belarus",
+    "Armenia",
+    "Azerbaijan",
+    "Mongolia"
+  ],
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "2005-2025",
+      "totalParticipants": 420,
+      "totalMedals": {
+        "gold": 85,
+        "silver": 145,
+        "bronze": 125,
+        "honorableMention": 35
+      },
+      "notableWinners": [
+        {
+          "name": "Askhat Zhalgasov",
+          "nameRu": "Асхат Жалгасов",
+          "years": [2015],
+          "medals": ["Gold Math"],
+          "notes": "Later IOI 2017 participant"
+        },
+        {
+          "name": "Nurtas Shyntas",
+          "nameRu": "Нуртас Шынтас",
+          "years": [2017],
+          "medals": ["Gold Math"],
+          "notes": "Later IMO 2019-2020 participant"
+        }
+      ],
+      "dataStatus": "expanded"
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "2005-2025",
+      "totalParticipants": 380,
+      "totalMedals": {
+        "gold": 65,
+        "silver": 125,
+        "bronze": 135,
+        "honorableMention": 40
+      },
+      "notableWinners": [],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "2005-2025",
+      "totalParticipants": 420,
+      "totalMedals": {
+        "gold": 120,
+        "silver": 140,
+        "bronze": 100,
+        "honorableMention": 35
+      },
+      "notableWinners": [],
+      "dataStatus": "partial"
+    }
+  },
+  "sources": [
+    "https://bilimal.kz/",
+    "Regional olympiad archives"
+  ]
+}

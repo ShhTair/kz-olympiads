@@ -105,8 +105,25 @@
       },
       "bestRank": 1,
       "bestRankYear": 2014,
-      "topScorers": [],
-      "dataStatus": "partial"
+      "topScorers": [
+        {
+          "name": "Mikhail Ipatov",
+          "nameRu": "Михаил Ипатов",
+          "years": [2011, 2012],
+          "medals": ["Gold 2011", "Gold 2012"],
+          "scores": [590, 585],
+          "notes": "2-time gold medalist"
+        },
+        {
+          "name": "Gennady Korotkevich",
+          "nameRu": "Геннадий Короткевич",
+          "years": [2007, 2008, 2009, 2010, 2011, 2012],
+          "medals": ["Silver 2007", "Gold 2008", "Gold 2009", "Gold 2010", "Gold 2011", "Gold 2012"],
+          "scores": [310, 498, 584, 595, 600, 593],
+          "notes": "6-time participant, perfect score 2011, legendary competitive programmer"
+        }
+      ],
+      "dataStatus": "expanded"
     },
     "ARM": {
       "countryCode": "ARM",

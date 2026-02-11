@@ -1,0 +1,69 @@
+{
+  "olympiadId": "ipho",
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "1993-2025",
+      "totalParticipants": 165,
+      "totalMedals": {
+        "gold": 6,
+        "silver": 48,
+        "bronze": 82,
+        "honorableMention": 18
+      },
+      "bestRank": 12,
+      "bestRankYear": 2013,
+      "notableParticipants": [
+        {
+          "name": "Timur Beksultanov",
+          "nameRu": "Тимур Бексултанов",
+          "years": [2013],
+          "medals": ["Gold 2013"],
+          "notes": "IPhO 2013 top performer"
+        },
+        {
+          "name": "Nurlan Zhanadil",
+          "nameRu": "Нурлан Жанадил",
+          "years": [2015],
+          "medals": ["Gold 2015"],
+          "notes": "IPhO 2015"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "1998-2025",
+      "totalParticipants": 135,
+      "totalMedals": {
+        "gold": 3,
+        "silver": 32,
+        "bronze": 65,
+        "honorableMention": 25
+      },
+      "bestRank": 28,
+      "bestRankYear": 2016,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "1992-2025",
+      "totalParticipants": 520,
+      "totalMedals": {
+        "gold": 125,
+        "silver": 165,
+        "bronze": 140,
+        "honorableMention": 60
+      },
+      "bestRank": 1,
+      "bestRankYear": 2019,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    }
+  },
+  "sources": [
+    "https://ipho-official.org/",
+    "https://www.ipho-new.org/"
+  ]
+}

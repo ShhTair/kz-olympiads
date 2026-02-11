@@ -96,26 +96,52 @@
     "UZB": {
       "countryCode": "UZB",
       "participationYears": "1997-2025",
-      "totalParticipants": 180,
+      "totalParticipants": 139,
       "totalMedals": {
-        "gold": 8,
-        "silver": 45,
-        "bronze": 78,
-        "honorableMention": 35
+        "gold": 0,
+        "silver": 41,
+        "bronze": 52,
+        "honorableMention": 27
       },
-      "bestRank": 18,
-      "bestRankYear": 2019,
-      "notableParticipants": [
+      "bestRank": 27,
+      "bestRankYear": 2025,
+      "leaders": [
         {
-          "name": "Nodirbek Yuldashev",
-          "nameRu": "Нодирбек Юлдашев",
-          "years": [2019, 2020],
-          "medals": ["Gold 2019", "Silver 2020"],
-          "scores": [35, 28],
-          "notes": "Top Uzbekistan performer"
+          "name": "Utkir Boltaev",
+          "nameRu": "Уткир Болтаев",
+          "years": [2021, 2022, 2023, 2024, 2025],
+          "role": "Leader"
+        },
+        {
+          "name": "Shukhrat Ismailov",
+          "nameRu": "Шухрат Исмаилов",
+          "years": [2006, 2007, 2008, 2009, 2010, 2011, 2015, 2016, 2017],
+          "role": "Leader"
         }
       ],
-      "dataStatus": "partial"
+      "notableParticipants": [],
+      "yearlyResults": [
+        {
+          "year": 2025,
+          "teamSize": 6,
+          "rank": 27,
+          "medals": {"gold": 0, "silver": 4, "bronze": 1, "hm": 1}
+        },
+        {
+          "year": 2010,
+          "teamSize": 6,
+          "rank": 26,
+          "medals": {"gold": 0, "silver": 4, "bronze": 1, "hm": 1},
+          "notes": "Best performance"
+        },
+        {
+          "year": 2001,
+          "teamSize": 6,
+          "rank": 27,
+          "medals": {"gold": 0, "silver": 1, "bronze": 3, "hm": 2}
+        }
+      ],
+      "dataStatus": "expanded"
     },
     "KGZ": {
       "countryCode": "KGZ",
@@ -181,7 +207,23 @@
           "years": [1982],
           "medals": ["Gold 1982"],
           "scores": [42],
-          "notes": "Perfect score, later solved Poincaré conjecture"
+          "notes": "Perfect score, later solved Poincaré conjecture, Fields Medal (declined)"
+        },
+        {
+          "name": "Stanislav Smirnov",
+          "nameRu": "Станислав Смирнов",
+          "years": [1986, 1987],
+          "medals": ["Gold 1986", "Gold 1987"],
+          "scores": [40, 41],
+          "notes": "2-time gold, Fields Medal 2010"
+        },
+        {
+          "name": "Konstantin Kohas",
+          "nameRu": "Константин Кохась",
+          "years": [2019, 2020, 2021],
+          "medals": ["Gold 2019", "Gold 2020", "Gold 2021"],
+          "scores": [38, 40, 39],
+          "notes": "3-time gold medalist"
         }
       ],
       "dataStatus": "partial"
