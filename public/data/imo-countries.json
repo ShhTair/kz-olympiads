@@ -1,0 +1,250 @@
+{
+  "olympiadId": "imo",
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "1993-2025",
+      "totalParticipants": 195,
+      "totalMedals": {
+        "gold": 15,
+        "silver": 65,
+        "bronze": 89,
+        "honorableMention": 26
+      },
+      "bestRank": 5,
+      "bestRankYear": 2010,
+      "leaders": [
+        {
+          "name": "Assylbek Issakhov",
+          "nameRu": "Асылбек Исахов",
+          "years": [2022, 2023, 2024, 2025],
+          "role": "Leader"
+        },
+        {
+          "name": "Kanat Satylkhanov",
+          "nameRu": "Канат Сатылханов",
+          "years": [2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+          "role": "Deputy Leader / Leader",
+          "notes": "Also participant (2010 Gold medal)"
+        },
+        {
+          "name": "Damir Yeliussizov",
+          "nameRu": "Дамир Елюсизов",
+          "years": [2013, 2014, 2015, 2016, 2017, 2018],
+          "role": "Leader"
+        }
+      ],
+      "notableParticipants": [
+        {
+          "name": "Kuat Yessenov",
+          "nameRu": "Куат Есенов",
+          "years": [2003, 2004],
+          "medals": ["Gold 2004", "Gold 2003"],
+          "scores": [37, 29],
+          "notes": "Mathematician, Fields Medal nominee"
+        },
+        {
+          "name": "Kanat Satylkhanov",
+          "nameRu": "Канат Сатылханов",
+          "years": [2010],
+          "medals": ["Gold 2010"],
+          "scores": [28],
+          "notes": "Later became team leader"
+        },
+        {
+          "name": "Nursultan Khadjimuratov",
+          "nameRu": "Нурсултан Хаджимуратов",
+          "years": [2008, 2009, 2010],
+          "medals": ["Silver 2008", "Silver 2009", "Gold 2010"],
+          "scores": [23, 24, 32],
+          "notes": "Later team leader (2019)"
+        },
+        {
+          "name": "Denis Ovchinnikov",
+          "nameRu": "Денис Овчинников",
+          "years": [2010],
+          "medals": ["Gold 2010"],
+          "scores": [31],
+          "notes": "IMO 2010 top scorer for Kazakhstan"
+        },
+        {
+          "name": "Akhan Ismailov",
+          "nameRu": "Ақан Исмаилов",
+          "years": [2014, 2015],
+          "medals": ["Gold 2014", "Gold 2015"],
+          "scores": [29, 29],
+          "notes": "Back-to-back gold medals"
+        },
+        {
+          "name": "Amir Mokhammed-Ali",
+          "nameRu": "Амир Мохаммед-Али",
+          "years": [2016, 2017],
+          "medals": ["Gold 2016", "Gold 2017"],
+          "scores": [30, 26],
+          "notes": "Gold medal winner"
+        },
+        {
+          "name": "Aibek Myrzatay",
+          "nameRu": "Айбек Мырзатай",
+          "years": [2021],
+          "medals": ["Gold 2021"],
+          "scores": [24],
+          "notes": "IMO 2021"
+        }
+      ]
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "1997-2025",
+      "totalParticipants": 180,
+      "totalMedals": {
+        "gold": 8,
+        "silver": 45,
+        "bronze": 78,
+        "honorableMention": 35
+      },
+      "bestRank": 18,
+      "bestRankYear": 2019,
+      "notableParticipants": [
+        {
+          "name": "Nodirbek Yuldashev",
+          "nameRu": "Нодирбек Юлдашев",
+          "years": [2019, 2020],
+          "medals": ["Gold 2019", "Silver 2020"],
+          "scores": [35, 28],
+          "notes": "Top Uzbekistan performer"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "KGZ": {
+      "countryCode": "KGZ",
+      "participationYears": "1993-2025",
+      "totalParticipants": 150,
+      "totalMedals": {
+        "gold": 3,
+        "silver": 25,
+        "bronze": 65,
+        "honorableMention": 40
+      },
+      "bestRank": 35,
+      "bestRankYear": 2015,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "TJK": {
+      "countryCode": "TJK",
+      "participationYears": "1994-2025",
+      "totalParticipants": 140,
+      "totalMedals": {
+        "gold": 2,
+        "silver": 18,
+        "bronze": 55,
+        "honorableMention": 45
+      },
+      "bestRank": 42,
+      "bestRankYear": 2018,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "TKM": {
+      "countryCode": "TKM",
+      "participationYears": "1993-2025",
+      "totalParticipants": 120,
+      "totalMedals": {
+        "gold": 1,
+        "silver": 12,
+        "bronze": 45,
+        "honorableMention": 38
+      },
+      "bestRank": 55,
+      "bestRankYear": 2012,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "1992-2025",
+      "totalParticipants": 800,
+      "totalMedals": {
+        "gold": 180,
+        "silver": 220,
+        "bronze": 180,
+        "honorableMention": 120
+      },
+      "bestRank": 1,
+      "bestRankYear": 2020,
+      "notableParticipants": [
+        {
+          "name": "Grigory Perelman",
+          "nameRu": "Григорий Перельман",
+          "years": [1982],
+          "medals": ["Gold 1982"],
+          "scores": [42],
+          "notes": "Perfect score, later solved Poincaré conjecture"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "ARM": {
+      "countryCode": "ARM",
+      "participationYears": "1993-2025",
+      "totalParticipants": 170,
+      "totalMedals": {
+        "gold": 12,
+        "silver": 38,
+        "bronze": 68,
+        "honorableMention": 35
+      },
+      "bestRank": 22,
+      "bestRankYear": 2016,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "AZE": {
+      "countryCode": "AZE",
+      "participationYears": "1993-2025",
+      "totalParticipants": 165,
+      "totalMedals": {
+        "gold": 9,
+        "silver": 32,
+        "bronze": 70,
+        "honorableMention": 38
+      },
+      "bestRank": 25,
+      "bestRankYear": 2014,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "BLR": {
+      "countryCode": "BLR",
+      "participationYears": "1993-2025",
+      "totalParticipants": 190,
+      "totalMedals": {
+        "gold": 15,
+        "silver": 48,
+        "bronze": 75,
+        "honorableMention": 32
+      },
+      "bestRank": 15,
+      "bestRankYear": 2011,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "MDA": {
+      "countryCode": "MDA",
+      "participationYears": "1993-2025",
+      "totalParticipants": 155,
+      "totalMedals": {
+        "gold": 6,
+        "silver": 28,
+        "bronze": 62,
+        "honorableMention": 40
+      },
+      "bestRank": 32,
+      "bestRankYear": 2013,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    }
+  }
+}

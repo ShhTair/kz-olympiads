@@ -17,27 +17,46 @@
     <!-- Header -->
     <div class="gradient-bg text-white py-12 mb-8">
         <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-4xl font-bold mb-2">🏆 Олимпиадники Казахстана</h1>
-            <p class="text-xl opacity-90">База данных участников международных олимпиад Республики Казахстан (2006-2026)</p>
-            <p class="text-sm mt-2 opacity-75">Kazakhstan International Olympiad Database</p>
+            <h1 class="text-4xl font-bold mb-2">🏆 Олимпиадники СНГ и Центральной Азии</h1>
+            <p class="text-xl opacity-90">База данных участников международных олимпиад из стран Центральной Азии и СНГ</p>
+            <p class="text-sm mt-2 opacity-75">CIS & Central Asia International Olympiad Database</p>
         </div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 pb-12">
-        <!-- Search Bar -->
+        <!-- Search Bar & Filters -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <div class="flex flex-col md:flex-row gap-4">
-                <div class="flex-1">
-                    <input
-                        id="searchInput"
-                        type="text"
-                        placeholder="Поиск по имени участника, лидера или олимпиаде..."
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                        oninput="performSearch()"
-                    />
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1">
+                        <input
+                            id="searchInput"
+                            type="text"
+                            placeholder="Поиск по имени участника, лидера или олимпиаде..."
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                            oninput="performSearch()"
+                        />
+                    </div>
                 </div>
-                <div class="flex gap-2">
-                    <select id="olympiadFilter" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" onchange="performSearch()">
+                <div class="flex flex-wrap gap-2">
+                    <select id="countryFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" onchange="updateView()">
+                        <option value="">Все страны</option>
+                        <optgroup label="Центральная Азия">
+                            <option value="KAZ">🇰🇿 Казахстан</option>
+                            <option value="UZB">🇺🇿 Узбекистан</option>
+                            <option value="KGZ">🇰🇬 Кыргызстан</option>
+                            <option value="TJK">🇹🇯 Таджикистан</option>
+                            <option value="TKM">🇹🇲 Туркменистан</option>
+                        </optgroup>
+                        <optgroup label="СНГ">
+                            <option value="RUS">🇷🇺 Россия</option>
+                            <option value="BLR">🇧🇾 Беларусь</option>
+                            <option value="ARM">🇦🇲 Армения</option>
+                            <option value="AZE">🇦🇿 Азербайджан</option>
+                            <option value="MDA">🇲🇩 Молдова</option>
+                        </optgroup>
+                    </select>
+                    <select id="olympiadFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" onchange="performSearch()">
                         <option value="">Все олимпиады</option>
                         <option value="imo">IMO - Математика</option>
                         <option value="ioi">IOI - Информатика</option>
@@ -46,7 +65,7 @@
                         <option value="ibo">IBO - Биология</option>
                         <option value="iol">IOL - Лингвистика</option>
                     </select>
-                    <select id="yearFilter" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" onchange="performSearch()">
+                    <select id="yearFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" onchange="performSearch()">
                         <option value="">Все годы</option>
                         <option value="2020-2026">2020-2026</option>
                         <option value="2015-2019">2015-2019</option>
@@ -65,19 +84,42 @@
                 <div class="text-xs text-gray-500 mt-1">IMO, IOI, IPhO, ICPC и др.</div>
             </div>
             <div class="bg-white rounded-lg shadow p-6 card-hover">
+                <div class="text-sm text-gray-600 mb-1">Стран</div>
+                <div class="text-3xl font-bold text-blue-600">10</div>
+                <div class="text-xs text-gray-500 mt-1">Центральная Азия + СНГ</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6 card-hover">
                 <div class="text-sm text-gray-600 mb-1">Участников</div>
-                <div class="text-3xl font-bold text-blue-600">400+</div>
-                <div class="text-xs text-gray-500 mt-1">IMO (195), IOI (69), IPhO (150+)</div>
+                <div class="text-3xl font-bold text-green-600">2500+</div>
+                <div class="text-xs text-gray-500 mt-1">Все страны и олимпиады</div>
             </div>
             <div class="bg-white rounded-lg shadow p-6 card-hover">
                 <div class="text-sm text-gray-600 mb-1">Золотых медалей</div>
-                <div class="text-3xl font-bold text-yellow-500">23+</div>
-                <div class="text-xs text-gray-500 mt-1">IMO (15), IOI (3), IPhO (5+)</div>
+                <div class="text-3xl font-bold text-yellow-500">330+</div>
+                <div class="text-xs text-gray-500 mt-1">Все страны IMO+IOI</div>
             </div>
-            <div class="bg-white rounded-lg shadow p-6 card-hover">
-                <div class="text-sm text-gray-600 mb-1">Лучшие ранги</div>
-                <div class="text-3xl font-bold text-green-600">#5 / #15</div>
-                <div class="text-xs text-gray-500 mt-1">IMO'10 (Астана) / IOI'07</div>
+        </div>
+
+        <!-- Country Comparison -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-6">🌍 Сравнение стран (IMO)</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b-2 border-gray-200">
+                            <th class="text-left py-3 px-2">Страна</th>
+                            <th class="text-center py-3 px-2">🥇</th>
+                            <th class="text-center py-3 px-2">🥈</th>
+                            <th class="text-center py-3 px-2">🥉</th>
+                            <th class="text-center py-3 px-2">Всего</th>
+                            <th class="text-center py-3 px-2">Лучший ранг</th>
+                            <th class="text-center py-3 px-2">Участников</th>
+                        </tr>
+                    </thead>
+                    <tbody id="countryComparison">
+                        <!-- Will be populated -->
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -91,7 +133,7 @@
 
         <!-- Notable Participants IMO -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-6">⭐ Выдающиеся Участники IMO (Математика)</h2>
+            <h2 class="text-2xl font-bold mb-6" id="imoTitle">⭐ Выдающиеся Участники IMO (Математика)</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="notableParticipants">
                 <!-- Will be populated by JS -->
             </div>
@@ -99,7 +141,7 @@
 
         <!-- Notable Participants IOI -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-6">💻 Выдающиеся Участники IOI (Информатика)</h2>
+            <h2 class="text-2xl font-bold mb-6" id="ioiTitle">💻 Выдающиеся Участники IOI (Информатика)</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="notableParticipantsIOI">
                 <!-- Will be populated by JS -->
             </div>
@@ -107,7 +149,7 @@
 
         <!-- Leaders -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-6">👨‍🏫 Лидеры и Тренеры (IMO)</h2>
+            <h2 class="text-2xl font-bold mb-6" id="leadersTitle">👨‍🏫 Лидеры и Тренеры (IMO)</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="leadersList">
                 <!-- Will be populated by JS -->
             </div>
@@ -138,6 +180,8 @@
         let imoData = null;
         let ioiData = null;
         let iphoData = null;
+        let countriesData = [];
+        let selectedCountry = 'KAZ'; // Default to Kazakhstan
 
         // Load data
         async function loadData() {
@@ -145,11 +189,14 @@
                 const olympiadsRes = await fetch('/data/olympiads-list.json');
                 olympiadsData = await olympiadsRes.json();
                 
-                const imoRes = await fetch('/data/imo-kazakhstan.json');
+                const countriesRes = await fetch('/data/countries.json');
+                countriesData = await countriesRes.json();
+                
+                const imoRes = await fetch('/data/imo-countries.json');
                 imoData = await imoRes.json();
                 
                 try {
-                    const ioiRes = await fetch('/data/ioi-kazakhstan.json');
+                    const ioiRes = await fetch('/data/ioi-countries.json');
                     ioiData = await ioiRes.json();
                 } catch (e) { console.log('IOI data not loaded'); }
                 
@@ -159,18 +206,37 @@
                 } catch (e) { console.log('IPhO data not loaded'); }
                 
                 renderOlympiads();
-                renderNotableParticipants();
-                renderNotableParticipantsIOI();
-                renderLeaders();
+                renderCountryComparison();
+                updateView();
             } catch (error) {
                 console.error('Error loading data:', error);
             }
         }
 
+        function updateView() {
+            selectedCountry = document.getElementById('countryFilter').value || 'KAZ';
+            const country = countriesData.find(c => c.code === selectedCountry);
+            const countryName = country ? country.nameRu : 'Казахстан';
+            const flag = country ? country.flag : '🇰🇿';
+            
+            document.getElementById('imoTitle').textContent = `⭐ Выдающиеся Участники IMO ${flag} ${countryName}`;
+            document.getElementById('ioiTitle').textContent = `💻 Выдающиеся Участники IOI ${flag} ${countryName}`;
+            document.getElementById('leadersTitle').textContent = `👨‍🏫 Лидеры и Тренеры IMO ${flag} ${countryName}`;
+            
+            renderNotableParticipants();
+            renderNotableParticipantsIOI();
+            renderLeaders();
+        }
+
         function renderNotableParticipantsIOI() {
             if (!ioiData) return;
+            const countryData = ioiData.countries[selectedCountry];
+            if (!countryData || !countryData.topScorers || countryData.topScorers.length === 0) {
+                document.getElementById('notableParticipantsIOI').innerHTML = '<div class="col-span-full text-center text-gray-500 py-8">Данные собираются</div>';
+                return;
+            }
             const container = document.getElementById('notableParticipantsIOI');
-            container.innerHTML = ioiData.topScorers.map(p => `
+            container.innerHTML = countryData.topScorers.map(p => `
                 <a href="/participant.html?olympiad=ioi&name=${encodeURIComponent(p.name)}" 
                    class="block border border-gray-200 rounded-lg p-4 card-hover hover:border-blue-300 transition-colors">
                     <div class="flex justify-between items-start mb-2">
@@ -210,10 +276,46 @@
             `).join('');
         }
 
+        function renderCountryComparison() {
+            if (!imoData || !countriesData) return;
+            const container = document.getElementById('countryComparison');
+            
+            const rows = Object.entries(imoData.countries)
+                .map(([code, data]) => {
+                    const country = countriesData.find(c => c.code === code);
+                    const total = data.totalMedals.gold + data.totalMedals.silver + data.totalMedals.bronze;
+                    return { code, data, country, total };
+                })
+                .sort((a, b) => b.data.totalMedals.gold - a.data.totalMedals.gold)
+                .slice(0, 10);
+
+            container.innerHTML = rows.map((row, i) => `
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                    <td class="py-3 px-2">
+                        <a href="/olympiad.html?id=imo&country=${row.code}" class="flex items-center gap-2 hover:text-purple-600">
+                            <span class="text-2xl">${row.country?.flag || ''}</span>
+                            <span class="font-medium">${row.country?.nameRu || row.code}</span>
+                        </a>
+                    </td>
+                    <td class="text-center py-3 px-2 font-semibold text-yellow-600">${row.data.totalMedals.gold}</td>
+                    <td class="text-center py-3 px-2 font-semibold text-gray-600">${row.data.totalMedals.silver}</td>
+                    <td class="text-center py-3 px-2 font-semibold text-orange-600">${row.data.totalMedals.bronze}</td>
+                    <td class="text-center py-3 px-2 font-bold">${row.total}</td>
+                    <td class="text-center py-3 px-2 text-green-600 font-semibold">#${row.data.bestRank}</td>
+                    <td class="text-center py-3 px-2 text-gray-600">${row.data.totalParticipants}</td>
+                </tr>
+            `).join('');
+        }
+
         function renderNotableParticipants() {
             if (!imoData) return;
+            const countryData = imoData.countries[selectedCountry];
+            if (!countryData || !countryData.notableParticipants) {
+                document.getElementById('notableParticipants').innerHTML = '<div class="col-span-full text-center text-gray-500 py-8">Данные собираются</div>';
+                return;
+            }
             const container = document.getElementById('notableParticipants');
-            container.innerHTML = imoData.notableParticipants.map(p => `
+            container.innerHTML = countryData.notableParticipants.map(p => `
                 <a href="/participant.html?olympiad=imo&name=${encodeURIComponent(p.name)}" 
                    class="block border border-gray-200 rounded-lg p-4 card-hover hover:border-purple-300 transition-colors">
                     <div class="flex justify-between items-start mb-2">
@@ -239,8 +341,13 @@
 
         function renderLeaders() {
             if (!imoData) return;
+            const countryData = imoData.countries[selectedCountry];
+            if (!countryData || !countryData.leaders) {
+                document.getElementById('leadersList').innerHTML = '<div class="col-span-full text-center text-gray-500 py-8">Данные собираются</div>';
+                return;
+            }
             const container = document.getElementById('leadersList');
-            container.innerHTML = imoData.leaders.map(l => `
+            container.innerHTML = countryData.leaders.map(l => `
                 <div class="border border-gray-200 rounded-lg p-4 card-hover">
                     <div class="font-semibold text-gray-900">${l.name}</div>
                     <div class="text-sm text-gray-600">${l.nameRu}</div>

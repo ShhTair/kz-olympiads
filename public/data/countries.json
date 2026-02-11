@@ -1,0 +1,122 @@
+[
+  {
+    "code": "KAZ",
+    "name": "Kazakhstan",
+    "nameRu": "Казахстан",
+    "nameLocal": "Қазақстан",
+    "region": "Central Asia",
+    "regionRu": "Центральная Азия",
+    "flag": "🇰🇿",
+    "population": 19500000,
+    "capital": "Astana",
+    "isoCode": "KZ"
+  },
+  {
+    "code": "UZB",
+    "name": "Uzbekistan",
+    "nameRu": "Узбекистан",
+    "nameLocal": "O'zbekiston",
+    "region": "Central Asia",
+    "regionRu": "Центральная Азия",
+    "flag": "🇺🇿",
+    "population": 35000000,
+    "capital": "Tashkent",
+    "isoCode": "UZ"
+  },
+  {
+    "code": "KGZ",
+    "name": "Kyrgyzstan",
+    "nameRu": "Кыргызстан",
+    "nameLocal": "Кыргызстан",
+    "region": "Central Asia",
+    "regionRu": "Центральная Азия",
+    "flag": "🇰🇬",
+    "population": 7000000,
+    "capital": "Bishkek",
+    "isoCode": "KG"
+  },
+  {
+    "code": "TJK",
+    "name": "Tajikistan",
+    "nameRu": "Таджикистан",
+    "nameLocal": "Тоҷикистон",
+    "region": "Central Asia",
+    "regionRu": "Центральная Азия",
+    "flag": "🇹🇯",
+    "population": 10000000,
+    "capital": "Dushanbe",
+    "isoCode": "TJ"
+  },
+  {
+    "code": "TKM",
+    "name": "Turkmenistan",
+    "nameRu": "Туркменистан",
+    "nameLocal": "Türkmenistan",
+    "region": "Central Asia",
+    "regionRu": "Центральная Азия",
+    "flag": "🇹🇲",
+    "population": 6500000,
+    "capital": "Ashgabat",
+    "isoCode": "TM"
+  },
+  {
+    "code": "RUS",
+    "name": "Russia",
+    "nameRu": "Россия",
+    "nameLocal": "Россия",
+    "region": "CIS",
+    "regionRu": "СНГ",
+    "flag": "🇷🇺",
+    "population": 146000000,
+    "capital": "Moscow",
+    "isoCode": "RU"
+  },
+  {
+    "code": "BLR",
+    "name": "Belarus",
+    "nameRu": "Беларусь",
+    "nameLocal": "Беларусь",
+    "region": "CIS",
+    "regionRu": "СНГ",
+    "flag": "🇧🇾",
+    "population": 9400000,
+    "capital": "Minsk",
+    "isoCode": "BY"
+  },
+  {
+    "code": "ARM",
+    "name": "Armenia",
+    "nameRu": "Армения",
+    "nameLocal": "Հայաստան",
+    "region": "CIS",
+    "regionRu": "СНГ",
+    "flag": "🇦🇲",
+    "population": 3000000,
+    "capital": "Yerevan",
+    "isoCode": "AM"
+  },
+  {
+    "code": "AZE",
+    "name": "Azerbaijan",
+    "nameRu": "Азербайджан",
+    "nameLocal": "Azərbaycan",
+    "region": "CIS",
+    "regionRu": "СНГ",
+    "flag": "🇦🇿",
+    "population": 10200000,
+    "capital": "Baku",
+    "isoCode": "AZ"
+  },
+  {
+    "code": "MDA",
+    "name": "Moldova",
+    "nameRu": "Молдова",
+    "nameLocal": "Moldova",
+    "region": "CIS",
+    "regionRu": "СНГ",
+    "flag": "🇲🇩",
+    "population": 2600000,
+    "capital": "Chisinau",
+    "isoCode": "MD"
+  }
+]

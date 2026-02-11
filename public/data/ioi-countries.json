@@ -1,0 +1,157 @@
+{
+  "olympiadId": "ioi",
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "1998-2025",
+      "totalParticipants": 69,
+      "totalMedals": {
+        "gold": 3,
+        "silver": 30,
+        "bronze": 42,
+        "honorableMention": 2
+      },
+      "bestRank": 15,
+      "bestRankYear": 2007,
+      "topScorers": [
+        {
+          "name": "Zhomart Sadykov",
+          "nameRu": "Жомарт Садыков",
+          "years": [2006, 2007, 2008],
+          "medals": ["Bronze 2006", "Gold 2007", "Silver 2008"],
+          "scores": [293, 420, 350],
+          "notes": "IOI 2007 Gold medal, rank 15/285"
+        },
+        {
+          "name": "Bakhytzhan Baizhikenov",
+          "nameRu": "Бахытжан Байжикенов",
+          "years": [2005, 2006, 2007, 2008],
+          "medals": ["Bronze 2005", "Bronze 2006", "Gold 2007", "Silver 2008"],
+          "scores": [315, 242, 415, 251],
+          "notes": "IOI 2007 Gold medal (rank 17), 4 participations"
+        },
+        {
+          "name": "Batyr Sardarbekov",
+          "nameRu": "Батыр Сардарбеков",
+          "years": [2019],
+          "medals": ["Gold 2019"],
+          "scores": [472],
+          "notes": "IOI 2019 Gold medal, rank 23/327"
+        },
+        {
+          "name": "Maxim Tsoy",
+          "nameRu": "Максим Цой",
+          "years": [2024, 2025],
+          "medals": ["Silver 2024", "Silver 2025"],
+          "scores": [538, 449],
+          "notes": "Recent top performer"
+        }
+      ]
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "2000-2025",
+      "totalParticipants": 85,
+      "totalMedals": {
+        "gold": 5,
+        "silver": 28,
+        "bronze": 45,
+        "honorableMention": 8
+      },
+      "bestRank": 22,
+      "bestRankYear": 2018,
+      "topScorers": [],
+      "dataStatus": "partial"
+    },
+    "KGZ": {
+      "countryCode": "KGZ",
+      "participationYears": "2001-2025",
+      "totalParticipants": 65,
+      "totalMedals": {
+        "gold": 1,
+        "silver": 15,
+        "bronze": 35,
+        "honorableMention": 12
+      },
+      "bestRank": 45,
+      "bestRankYear": 2019,
+      "topScorers": [],
+      "dataStatus": "partial"
+    },
+    "TJK": {
+      "countryCode": "TJK",
+      "participationYears": "2002-2025",
+      "totalParticipants": 55,
+      "totalMedals": {
+        "gold": 0,
+        "silver": 8,
+        "bronze": 28,
+        "honorableMention": 15
+      },
+      "bestRank": 62,
+      "bestRankYear": 2016,
+      "topScorers": [],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "1989-2025",
+      "totalParticipants": 450,
+      "totalMedals": {
+        "gold": 95,
+        "silver": 120,
+        "bronze": 110,
+        "honorableMention": 45
+      },
+      "bestRank": 1,
+      "bestRankYear": 2014,
+      "topScorers": [],
+      "dataStatus": "partial"
+    },
+    "ARM": {
+      "countryCode": "ARM",
+      "participationYears": "2006-2025",
+      "totalParticipants": 60,
+      "totalMedals": {
+        "gold": 2,
+        "silver": 18,
+        "bronze": 32,
+        "honorableMention": 8
+      },
+      "bestRank": 38,
+      "bestRankYear": 2017,
+      "topScorers": [],
+      "dataStatus": "partial"
+    },
+    "AZE": {
+      "countryCode": "AZE",
+      "participationYears": "2007-2025",
+      "totalParticipants": 58,
+      "totalMedals": {
+        "gold": 1,
+        "silver": 15,
+        "bronze": 30,
+        "honorableMention": 10
+      },
+      "bestRank": 42,
+      "bestRankYear": 2015,
+      "topScorers": [],
+      "dataStatus": "partial"
+    },
+    "BLR": {
+      "countryCode": "BLR",
+      "participationYears": "1992-2025",
+      "totalParticipants": 120,
+      "totalMedals": {
+        "gold": 8,
+        "silver": 35,
+        "bronze": 55,
+        "honorableMention": 18
+      },
+      "bestRank": 18,
+      "bestRankYear": 2010,
+      "topScorers": [],
+      "dataStatus": "partial"
+    }
+  }
+}
