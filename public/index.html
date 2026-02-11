@@ -12,309 +12,181 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: {
-                            bg: '#0a0a0a',
-                            card: '#111111',
-                            hover: '#1a1a1a',
-                            border: '#222222',
-                            text: '#e4e4e7',
-                            muted: '#71717a'
-                        }
-                    }
+                        border: "hsl(240 3.7% 15.9%)",
+                        input: "hsl(240 3.7% 15.9%)",
+                        ring: "hsl(240 4.9% 83.9%)",
+                        background: "hsl(240 10% 3.9%)",
+                        foreground: "hsl(0 0% 98%)",
+                        primary: {
+                            DEFAULT: "hsl(0 0% 98%)",
+                            foreground: "hsl(240 5.9% 10%)",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(240 3.7% 15.9%)",
+                            foreground: "hsl(0 0% 98%)",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(240 3.7% 15.9%)",
+                            foreground: "hsl(240 5% 64.9%)",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(240 3.7% 15.9%)",
+                            foreground: "hsl(0 0% 98%)",
+                        },
+                    },
                 }
             }
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
         
         body {
-            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
         }
         
-        .gradient-text {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .card-hover {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .glass {
-            background: rgba(17, 17, 17, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .search-result {
-            transition: all 0.2s;
-        }
-        
-        .search-result:hover {
-            background: #1a1a1a;
-            transform: translateX(4px);
+        .card-hover:hover {
+            border-color: hsl(240 3.7% 25%);
         }
         
         .medal-gold { color: #fbbf24; }
         .medal-silver { color: #94a3b8; }
         .medal-bronze { color: #f97316; }
         
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #444; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: hsl(240 10% 3.9%); }
+        ::-webkit-scrollbar-thumb { background: hsl(240 3.7% 15.9%); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: hsl(240 3.7% 25%); }
+        
+        .search-active {
+            box-shadow: 0 0 0 1px hsl(240 5% 64.9%);
+        }
     </style>
 </head>
-<body class="bg-dark-bg text-dark-text">
+<body class="bg-background text-foreground">
 
     <!-- Header -->
-    <header class="glass fixed top-0 w-full z-50 border-b border-dark-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-3">
-                    <div class="text-2xl">🏆</div>
-                    <span class="font-bold text-lg gradient-text">OlympiadDB</span>
-                </div>
-                
-                <nav class="hidden md:flex items-center gap-6">
-                    <a href="/" class="text-sm font-medium hover:text-blue-400 transition">Участники</a>
-                    <a href="/stats.html" class="text-sm font-medium text-dark-muted hover:text-blue-400 transition">Статистика</a>
-                    <a href="/countries.html" class="text-sm font-medium text-dark-muted hover:text-blue-400 transition">Страны</a>
-                    <a href="/olympiads.html" class="text-sm font-medium text-dark-muted hover:text-blue-400 transition">Олимпиады</a>
-                </nav>
-                
-                <button class="md:hidden text-dark-muted">
-                    <i class="fas fa-bars"></i>
-                </button>
+    <header class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div class="container flex h-14 items-center px-4 sm:px-8">
+            <div class="mr-4 flex">
+                <a class="mr-6 flex items-center space-x-2" href="/">
+                    <span class="text-xl">🏆</span>
+                    <span class="font-bold">OlympiadDB</span>
+                </a>
             </div>
+            <nav class="flex items-center space-x-6 text-sm font-medium">
+                <a class="transition-colors hover:text-foreground/80 text-foreground" href="/">Участники</a>
+                <a class="transition-colors hover:text-foreground/80 text-foreground/60" href="/stats.html">Статистика</a>
+                <a class="transition-colors hover:text-foreground/80 text-foreground/60" href="/countries.html">Страны</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto">
-            
-            <!-- Hero Section -->
-            <div class="text-center mb-12">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">
-                    База данных <span class="gradient-text">олимпиадников</span>
-                </h1>
-                <p class="text-lg text-dark-muted mb-2">
-                    13 международных олимпиад • 10 стран • 11,000+ участников
-                </p>
-                <p class="text-sm text-dark-muted">
-                    2006-2026 • СНГ и Центральная Азия
-                </p>
-            </div>
-
-            <!-- Search Bar with Autocomplete -->
-            <div class="relative mb-12">
-                <div class="relative">
-                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-dark-muted"></i>
-                    <input
-                        id="search"
-                        type="text"
-                        placeholder="Введите имя участника..."
-                        class="w-full pl-12 pr-4 py-4 bg-dark-card border border-dark-border rounded-xl text-lg focus:outline-none focus:border-blue-500 transition"
-                        autocomplete="off"
-                    />
-                </div>
-                
-                <!-- Autocomplete Results -->
-                <div id="autocomplete" class="absolute w-full mt-2 glass rounded-xl overflow-hidden hidden max-h-96 overflow-y-auto">
-                    <!-- Will be populated by JS -->
-                </div>
-            </div>
-
-            <!-- Recent Participants -->
-            <div class="mb-8">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-xl font-semibold">Последние медалисты</h2>
-                    <div class="flex gap-2">
-                        <button class="px-3 py-1.5 text-xs font-medium bg-dark-card border border-dark-border rounded-lg hover:border-blue-500 transition">
-                            Все
-                        </button>
-                        <button class="px-3 py-1.5 text-xs font-medium text-dark-muted hover:text-white transition">
-                            Золото
-                        </button>
-                        <button class="px-3 py-1.5 text-xs font-medium text-dark-muted hover:text-white transition">
-                            2025
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="space-y-3" id="recentList">
-                    <!-- Will be populated by JS -->
-                </div>
-            </div>
-
+    <main class="container px-4 sm:px-8 py-8 md:py-12">
+        
+        <!-- Hero -->
+        <div class="mb-12">
+            <h1 class="text-3xl font-bold tracking-tight sm:text-4xl mb-3">
+                База данных олимпиадников
+            </h1>
+            <p class="text-muted-foreground">
+                13 олимпиад • 10 стран • 11,000+ участников • 2006-2026
+            </p>
         </div>
+
+        <!-- Search & Filters -->
+        <div class="mb-8 space-y-4">
+            <div class="relative">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"></i>
+                <input
+                    id="search"
+                    type="text"
+                    placeholder="Поиск участника..."
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-10 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                />
+                <button id="clearSearch" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground hidden">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Autocomplete -->
+            <div id="autocomplete" class="hidden rounded-md border border-border bg-secondary p-2 space-y-1 max-h-96 overflow-auto"></div>
+            
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-2">
+                <select id="filterCountry" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring h-9 px-3 border border-input bg-background hover:bg-accent">
+                    <option value="">Все страны</option>
+                    <option value="KAZ">🇰🇿 Казахстан</option>
+                    <option value="UZB">🇺🇿 Узбекистан</option>
+                    <option value="RUS">🇷🇺 Россия</option>
+                    <option value="BLR">🇧🇾 Беларусь</option>
+                    <option value="ARM">🇦🇲 Армения</option>
+                </select>
+                
+                <select id="filterOlympiad" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-9 px-3 border border-input bg-background hover:bg-accent">
+                    <option value="">Все олимпиады</option>
+                    <option value="IMO">IMO - Математика</option>
+                    <option value="IOI">IOI - Информатика</option>
+                    <option value="IPhO">IPhO - Физика</option>
+                    <option value="IChO">IChO - Химия</option>
+                    <option value="IBO">IBO - Биология</option>
+                </select>
+                
+                <select id="filterMedal" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-9 px-3 border border-input bg-background hover:bg-accent">
+                    <option value="">Все медали</option>
+                    <option value="gold">🥇 Золото</option>
+                    <option value="silver">🥈 Серебро</option>
+                    <option value="bronze">🥉 Бронза</option>
+                </select>
+                
+                <select id="filterYear" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-9 px-3 border border-input bg-background hover:bg-accent">
+                    <option value="">Все годы</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2020-2025">2020-2025</option>
+                    <option value="2015-2019">2015-2019</option>
+                    <option value="2010-2014">2010-2014</option>
+                </select>
+                
+                <button id="resetFilters" class="inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-3 text-muted-foreground hover:text-foreground">
+                    <i class="fas fa-redo mr-2"></i>Сбросить
+                </button>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold" id="resultsTitle">Недавние медалисты</h2>
+                <div class="text-sm text-muted-foreground" id="resultsCount"></div>
+            </div>
+            
+            <div id="noResults" class="hidden text-center py-12">
+                <div class="text-4xl mb-4">🔍</div>
+                <h3 class="text-lg font-semibold mb-2">Ничего не найдено</h3>
+                <p class="text-muted-foreground mb-4">Попробуйте изменить параметры поиска</p>
+                <button onclick="resetAll()" class="inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 bg-primary text-primary-foreground hover:bg-primary/90">
+                    Сбросить фильтры
+                </button>
+            </div>
+            
+            <div id="results" class="grid gap-3">
+                <!-- Will be populated -->
+            </div>
+        </div>
+
     </main>
 
-    <script>
-        // Sample data for demonstration
-        const participants = [
-            {
-                name: "Maxim Tsoy",
-                nameRu: "Максим Цой",
-                country: "KAZ",
-                olympiad: "IOI",
-                year: 2025,
-                medal: "silver",
-                score: 449
-            },
-            {
-                name: "Margulan Sharel",
-                nameRu: "Маргулан Шарел",
-                country: "KAZ",
-                olympiad: "IMO",
-                year: 2025,
-                medal: "silver",
-                score: 31
-            },
-            {
-                name: "Gennady Korotkevich",
-                nameRu: "Геннадий Короткевич",
-                country: "BLR",
-                olympiad: "IOI",
-                year: 2011,
-                medal: "gold",
-                score: 600
-            },
-            {
-                name: "Kuat Yessenov",
-                nameRu: "Куат Есенов",
-                country: "KAZ",
-                olympiad: "IMO",
-                year: 2004,
-                medal: "gold",
-                score: 37
-            },
-            {
-                name: "Batyr Sardarbekov",
-                nameRu: "Батыр Сардарбеков",
-                country: "KAZ",
-                olympiad: "IOI",
-                year: 2019,
-                medal: "gold",
-                score: 472
-            }
-        ];
-
-        const countryFlags = {
-            KAZ: '🇰🇿',
-            UZB: '🇺🇿',
-            RUS: '🇷🇺',
-            BLR: '🇧🇾',
-            ARM: '🇦🇲',
-            AZE: '🇦🇿'
-        };
-
-        const olympiadNames = {
-            IMO: 'Математика',
-            IOI: 'Информатика',
-            IPhO: 'Физика'
-        };
-
-        const medalEmojis = {
-            gold: '🥇',
-            silver: '🥈',
-            bronze: '🥉'
-        };
-
-        const medalColors = {
-            gold: 'medal-gold',
-            silver: 'medal-silver',
-            bronze: 'medal-bronze'
-        };
-
-        // Render recent participants
-        function renderRecent() {
-            const container = document.getElementById('recentList');
-            container.innerHTML = participants.slice(0, 10).map(p => `
-                <a href="/participant.html?olympiad=${p.olympiad.toLowerCase()}&name=${encodeURIComponent(p.name)}" 
-                   class="block bg-dark-card border border-dark-border rounded-lg p-4 search-result">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <div class="text-2xl ${medalColors[p.medal]}">
-                                ${medalEmojis[p.medal]}
-                            </div>
-                            <div>
-                                <div class="font-semibold text-white">${p.name}</div>
-                                <div class="text-sm text-dark-muted">${p.nameRu}</div>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="flex items-center gap-2 text-sm mb-1">
-                                <span class="text-xs px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">
-                                    ${p.olympiad} ${p.year}
-                                </span>
-                                <span class="text-dark-muted">${countryFlags[p.country]}</span>
-                            </div>
-                            <div class="text-xs text-dark-muted">
-                                ${olympiadNames[p.olympiad]} • ${p.score} pts
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            `).join('');
-        }
-
-        // Autocomplete search
-        const searchInput = document.getElementById('search');
-        const autocompleteBox = document.getElementById('autocomplete');
-
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            
-            if (query.length < 2) {
-                autocompleteBox.classList.add('hidden');
-                return;
-            }
-
-            const results = participants.filter(p => 
-                p.name.toLowerCase().includes(query) || 
-                p.nameRu.toLowerCase().includes(query)
-            );
-
-            if (results.length === 0) {
-                autocompleteBox.classList.add('hidden');
-                return;
-            }
-
-            autocompleteBox.innerHTML = results.map(p => `
-                <a href="/participant.html?olympiad=${p.olympiad.toLowerCase()}&name=${encodeURIComponent(p.name)}" 
-                   class="flex items-center gap-4 p-4 hover:bg-dark-hover transition border-b border-dark-border last:border-0">
-                    <div class="text-xl ${medalColors[p.medal]}">
-                        ${medalEmojis[p.medal]}
-                    </div>
-                    <div class="flex-1">
-                        <div class="font-medium text-white">${p.name}</div>
-                        <div class="text-sm text-dark-muted">${p.nameRu}</div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-xs px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">
-                            ${p.olympiad} ${p.year}
-                        </span>
-                        <span>${countryFlags[p.country]}</span>
-                    </div>
-                </a>
-            `).join('');
-
-            autocompleteBox.classList.remove('hidden');
-        });
-
-        // Close autocomplete when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !autocompleteBox.contains(e.target)) {
-                autocompleteBox.classList.add('hidden');
-            }
-        });
-
-        // Initialize
-        renderRecent();
-    </script>
+    <script src="/js/app.js"></script>
 
 </body>
 </html>
