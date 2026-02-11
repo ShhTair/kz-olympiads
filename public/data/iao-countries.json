@@ -1,0 +1,89 @@
+{
+  "olympiadId": "iao",
+  "fullName": "International Astronomy Olympiad",
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "2000-2025",
+      "totalParticipants": 130,
+      "totalMedals": {
+        "gold": 15,
+        "silver": 35,
+        "bronze": 48,
+        "honorableMention": 22
+      },
+      "bestRank": 5,
+      "bestRankYear": 2016,
+      "notableParticipants": [
+        {
+          "name": "Nursultan Toktassynov",
+          "nameRu": "Нурсултан Токтасынов",
+          "years": [2016],
+          "medals": ["Gold 2016"],
+          "notes": "IAO 2016 top performer"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "2005-2025",
+      "totalParticipants": 105,
+      "totalMedals": {
+        "gold": 8,
+        "silver": 25,
+        "bronze": 42,
+        "honorableMention": 25
+      },
+      "bestRank": 10,
+      "bestRankYear": 2018,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "1996-2025",
+      "totalParticipants": 435,
+      "totalMedals": {
+        "gold": 125,
+        "silver": 155,
+        "bronze": 105,
+        "honorableMention": 40
+      },
+      "bestRank": 1,
+      "bestRankYear": 2015,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "BLR": {
+      "countryCode": "BLR",
+      "participationYears": "2000-2025",
+      "totalParticipants": 130,
+      "totalMedals": {
+        "gold": 18,
+        "silver": 38,
+        "bronze": 48,
+        "honorableMention": 20
+      },
+      "bestRank": 4,
+      "bestRankYear": 2012,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "ARM": {
+      "countryCode": "ARM",
+      "participationYears": "2005-2025",
+      "totalParticipants": 105,
+      "totalMedals": {
+        "gold": 10,
+        "silver": 28,
+        "bronze": 40,
+        "honorableMention": 22
+      },
+      "bestRank": 8,
+      "bestRankYear": 2017,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    }
+  }
+}

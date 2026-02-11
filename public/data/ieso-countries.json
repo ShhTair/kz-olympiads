@@ -1,0 +1,74 @@
+{
+  "olympiadId": "ieso",
+  "fullName": "International Earth Science Olympiad",
+  "countries": {
+    "KAZ": {
+      "countryCode": "KAZ",
+      "participationYears": "2010-2025",
+      "totalParticipants": 64,
+      "totalMedals": {
+        "gold": 5,
+        "silver": 15,
+        "bronze": 28,
+        "honorableMention": 12
+      },
+      "bestRank": 10,
+      "bestRankYear": 2018,
+      "notableParticipants": [
+        {
+          "name": "Dias Kanatov",
+          "nameRu": "Диас Канатов",
+          "years": [2018],
+          "medals": ["Gold 2018"],
+          "notes": "IESO 2018 gold medalist"
+        }
+      ],
+      "dataStatus": "partial"
+    },
+    "UZB": {
+      "countryCode": "UZB",
+      "participationYears": "2012-2025",
+      "totalParticipants": 56,
+      "totalMedals": {
+        "gold": 3,
+        "silver": 12,
+        "bronze": 24,
+        "honorableMention": 14
+      },
+      "bestRank": 15,
+      "bestRankYear": 2019,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "RUS": {
+      "countryCode": "RUS",
+      "participationYears": "2007-2025",
+      "totalParticipants": 304,
+      "totalMedals": {
+        "gold": 85,
+        "silver": 110,
+        "bronze": 75,
+        "honorableMention": 28
+      },
+      "bestRank": 1,
+      "bestRankYear": 2017,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    },
+    "TJK": {
+      "countryCode": "TJK",
+      "participationYears": "2014-2025",
+      "totalParticipants": 48,
+      "totalMedals": {
+        "gold": 1,
+        "silver": 6,
+        "bronze": 18,
+        "honorableMention": 18
+      },
+      "bestRank": 25,
+      "bestRankYear": 2020,
+      "notableParticipants": [],
+      "dataStatus": "partial"
+    }
+  }
+}
