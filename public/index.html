@@ -171,7 +171,8 @@
             if (!ioiData) return;
             const container = document.getElementById('notableParticipantsIOI');
             container.innerHTML = ioiData.topScorers.map(p => `
-                <div class="border border-gray-200 rounded-lg p-4 card-hover">
+                <a href="/participant.html?olympiad=ioi&name=${encodeURIComponent(p.name)}" 
+                   class="block border border-gray-200 rounded-lg p-4 card-hover hover:border-blue-300 transition-colors">
                     <div class="flex justify-between items-start mb-2">
                         <div>
                             <div class="font-semibold text-gray-900">${p.name}</div>
@@ -188,23 +189,24 @@
                         }).join('')}
                     </div>
                     ${p.notes ? `<div class="text-xs text-gray-500 mt-2">${p.notes}</div>` : ''}
-                    <div class="text-xs text-blue-600 mt-2">Scores: ${p.scores.join(', ')}</div>
-                </div>
+                    <div class="text-xs text-blue-600 mt-2">Scores: ${p.scores.join(', ')} • Подробнее →</div>
+                </a>
             `).join('');
         }
 
         function renderOlympiads() {
             const container = document.getElementById('olympiadsList');
             container.innerHTML = olympiadsData.map(o => `
-                <div class="border border-gray-200 rounded-lg p-4 card-hover cursor-pointer" onclick="selectOlympiad('${o.id}')">
+                <a href="/olympiad.html?id=${o.id}" 
+                   class="block border border-gray-200 rounded-lg p-4 card-hover hover:border-purple-300 transition-colors">
                     <div class="font-semibold text-gray-900">${o.id.toUpperCase()}</div>
                     <div class="text-sm text-gray-700 mt-1">${o.nameRu}</div>
                     <div class="text-xs text-gray-500 mt-2">${o.subject}</div>
                     <div class="flex flex-wrap gap-1 mt-2">
                         ${o.tags.map(tag => `<span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">${tag}</span>`).join('')}
                     </div>
-                    ${o.kazParticipationStart ? `<div class="text-xs text-gray-400 mt-2">Казахстан с ${o.kazParticipationStart}</div>` : ''}
-                </div>
+                    ${o.kazParticipationStart ? `<div class="text-xs text-purple-600 mt-2">Казахстан с ${o.kazParticipationStart} • Подробнее →</div>` : '<div class="text-xs text-gray-400 mt-2">Подробнее →</div>'}
+                </a>
             `).join('');
         }
 
@@ -212,7 +214,8 @@
             if (!imoData) return;
             const container = document.getElementById('notableParticipants');
             container.innerHTML = imoData.notableParticipants.map(p => `
-                <div class="border border-gray-200 rounded-lg p-4 card-hover">
+                <a href="/participant.html?olympiad=imo&name=${encodeURIComponent(p.name)}" 
+                   class="block border border-gray-200 rounded-lg p-4 card-hover hover:border-purple-300 transition-colors">
                     <div class="flex justify-between items-start mb-2">
                         <div>
                             <div class="font-semibold text-gray-900">${p.name}</div>
@@ -229,8 +232,8 @@
                         }).join('')}
                     </div>
                     ${p.notes ? `<div class="text-xs text-gray-500 mt-2">${p.notes}</div>` : ''}
-                    <div class="text-xs text-purple-600 mt-2">Scores: ${p.scores.join(', ')}</div>
-                </div>
+                    <div class="text-xs text-purple-600 mt-2">Scores: ${p.scores.join(', ')} • Подробнее →</div>
+                </a>
             `).join('');
         }
 
@@ -246,11 +249,6 @@
                     ${l.notes ? `<div class="text-xs text-gray-400 mt-2">${l.notes}</div>` : ''}
                 </div>
             `).join('');
-        }
-
-        function selectOlympiad(id) {
-            document.getElementById('olympiadFilter').value = id;
-            performSearch();
         }
 
         function performSearch() {

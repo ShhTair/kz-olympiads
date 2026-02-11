@@ -1,0 +1,39 @@
+{
+  "olympiadId": "zhautykov",
+  "country": "Kazakhstan",
+  "countryCode": "KAZ",
+  "participationYears": "2005-2025",
+  "isRegional": true,
+  "isKazakhstanOwned": true,
+  "subjects": ["Mathematics", "Physics"],
+  "ageGroup": "Junior (Grades 7-9)",
+  "format": "Team competition",
+  "notes": "International Olympiad named after O.A. Zhautykov, organized annually in Kazakhstan. Focuses on junior students from CIS countries and beyond.",
+  "participatingCountries": [
+    "Kazakhstan",
+    "Russia", 
+    "Uzbekistan",
+    "Kyrgyzstan",
+    "Tajikistan",
+    "Turkmenistan",
+    "Belarus",
+    "Armenia",
+    "Azerbaijan",
+    "Mongolia"
+  ],
+  "dataStatus": "partial",
+  "totalParticipants": 200,
+  "notableWinners": [
+    {
+      "name": "Askhat Zhalgasov",
+      "nameRu": "Асхат Жалгасов",
+      "years": [2015],
+      "medals": ["Gold"],
+      "notes": "Later IOI participant"
+    }
+  ],
+  "sources": [
+    "https://bilimal.kz/",
+    "Regional olympiad archives"
+  ]
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Олимпиада | База Олимпиадников Казахстана</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div class="gradient-bg text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <a href="/" class="text-sm opacity-75 hover:opacity-100 mb-4 inline-block">← Назад к базе</a>
+            <div class="flex items-start justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold mb-2" id="olympiadName">Загрузка...</h1>
+                    <p class="text-lg opacity-90" id="olympiadNameRu"></p>
+                </div>
+                <div class="text-right">
+                    <div class="text-4xl font-bold" id="olympiadCode"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Overview -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8" id="overview">
+            <!-- Will be populated -->
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8" id="statsGrid">
+            <!-- Will be populated -->
+        </div>
+
+        <!-- All Participants -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-6">👥 Все участники из Казахстана</h2>
+            <div id="allParticipants" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Will be populated -->
+            </div>
+        </div>
+
+        <!-- Best Years -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8" id="bestYearsSection">
+            <h2 class="text-2xl font-bold mb-6">🏆 Лучшие выступления Казахстана</h2>
+            <div id="bestYears" class="space-y-4">
+                <!-- Will be populated -->
+            </div>
+        </div>
+
+        <!-- External Links -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold mb-6">🔗 Официальные ресурсы</h2>
+            <div id="externalLinks" class="space-y-2">
+                <!-- Will be populated -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const olympiadId = urlParams.get('id');
+
+        async function loadOlympiad() {
+            if (!olympiadId) {
+                document.getElementById('olympiadName').textContent = 'Олимпиада не найдена';
+                return;
+            }
+
+            try {
+                // Load olympiad info
+                const listRes = await fetch('/data/olympiads-list.json');
+                const olympiadsList = await listRes.json();
+                const olympiadInfo = olympiadsList.find(o => o.id === olympiadId);
+
+                if (!olympiadInfo) {
+                    document.getElementById('olympiadName').textContent = 'Данные не найдены';
+                    return;
+                }
+
+                document.getElementById('pageTitle').textContent = `${olympiadInfo.name} | База Олимпиадников`;
+                document.getElementById('olympiadName').textContent = olympiadInfo.name;
+                document.getElementById('olympiadNameRu').textContent = olympiadInfo.nameRu;
+                document.getElementById('olympiadCode').textContent = olympiadInfo.id.toUpperCase();
+
+                // Overview
+                document.getElementById('overview').innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-sm text-gray-600 mb-2">Предмет</div>
+                            <div class="text-lg font-semibold text-gray-900">${olympiadInfo.subject}</div>
+                            <div class="text-sm text-gray-600">${olympiadInfo.subjectRu}</div>
+                        </div>
+                        <div>
+                            <div class="text-sm text-gray-600 mb-2">Участие Казахстана</div>
+                            <div class="text-lg font-semibold text-gray-900">${olympiadInfo.kazParticipationStart || 'TBD'} - настоящее время</div>
+                            <div class="text-sm text-gray-600">Начало олимпиады: ${olympiadInfo.yearStart}</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        ${olympiadInfo.tags.map(tag => 
+                            `<span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">${tag}</span>`
+                        ).join('')}
+                    </div>
+                `;
+
+                // Load detailed data if available
+                if (olympiadId === 'imo') {
+                    const res = await fetch('/data/imo-kazakhstan.json');
+                    const data = await res.json();
+                    renderIMOData(data, olympiadInfo);
+                } else if (olympiadId === 'ioi') {
+                    const res = await fetch('/data/ioi-kazakhstan.json');
+                    const data = await res.json();
+                    renderIOIData(data, olympiadInfo);
+                } else {
+                    // Generic rendering for olympiads without detailed data
+                    renderGenericData(olympiadInfo);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('olympiadName').textContent = 'Ошибка загрузки';
+            }
+        }
+
+        function renderIMOData(data, olympiadInfo) {
+            // Stats
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 mb-1">Участников</div>
+                    <div class="text-3xl font-bold text-purple-600">${data.totalParticipants}+</div>
+                    <div class="text-xs text-gray-500 mt-1">${data.participationYears}</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 mb-1">Золото</div>
+                    <div class="text-3xl font-bold text-yellow-500">${data.totalMedals.gold}</div>
+                    <div class="text-xs text-gray-500 mt-1">🥇 Лучшие результаты</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 mb-1">Серебро + Бронза</div>
+                    <div class="text-3xl font-bold text-gray-600">${data.totalMedals.silver + data.totalMedals.bronze}</div>
+                    <div class="text-xs text-gray-500 mt-1">🥈 ${data.totalMedals.silver} / 🥉 ${data.totalMedals.bronze}</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 mb-1">Лучший ранг</div>
+                    <div class="text-3xl font-bold text-green-600">#${data.bestRank}</div>
+                    <div class="text-xs text-gray-500 mt-1">${data.bestRankYear} год</div>
+                </div>
+            `;
+
+            // All participants
+            document.getElementById('allParticipants').innerHTML = data.notableParticipants.map(p => `
+                <a href="/participant.html?olympiad=imo&name=${encodeURIComponent(p.name)}" 
+                   class="block border border-gray-200 rounded-lg p-4 hover:border-purple-300 transition-colors">
+                    <div class="font-semibold text-gray-900">${p.name}</div>
+                    <div class="text-sm text-gray-600">${p.nameRu}</div>
+                    <div class="flex flex-wrap gap-1 mt-2">
+                        ${p.medals.slice(0, 3).map(m => {
+                            const color = m.includes('Gold') ? 'yellow' : m.includes('Silver') ? 'gray' : 'orange';
+                            return `<span class="px-2 py-1 bg-${color}-100 text-${color}-700 text-xs rounded">${m}</span>`;
+                        }).join('')}
+                        ${p.medals.length > 3 ? `<span class="text-xs text-gray-500">+${p.medals.length - 3}</span>` : ''}
+                    </div>
+                </a>
+            `).join('');
+
+            // Best years
+            if (data.yearlyResults) {
+                const bestYears = [...data.yearlyResults].sort((a, b) => a.rank - b.rank).slice(0, 5);
+                document.getElementById('bestYears').innerHTML = bestYears.map(y => `
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="font-semibold text-lg">IMO ${y.year} - ${y.location}</div>
+                                <div class="text-sm text-gray-600 mt-1">Ранг: #${y.rank} (топ ${y.relativeRank})</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold">Медали:</div>
+                                <div class="text-sm">🥇 ${y.medals.gold} 🥈 ${y.medals.silver} 🥉 ${y.medals.bronze}</div>
+                            </div>
+                        </div>
+                        ${y.notes ? `<div class="text-sm text-gray-500 mt-2">${y.notes}</div>` : ''}
+                    </div>
+                `).join('');
+            }
+
+            // External links
+            document.getElementById('externalLinks').innerHTML = `
+                <a href="${olympiadInfo.officialSite}" target="_blank" class="block text-purple-600 hover:underline">
+                    🌐 ${olympiadInfo.officialSite}
+                </a>
+                <a href="${olympiadInfo.kazPageUrl}" target="_blank" class="block text-purple-600 hover:underline">
+                    🇰🇿 Результаты сборной Казахстана
+                </a>
+                <a href="https://www.imo-official.org/year_info.aspx?year=2025" target="_blank" class="block text-purple-600 hover:underline">
+                    📊 Последние результаты IMO
+                </a>
+            `;
+        }
+
+        function renderIOIData(data, olympiadInfo) {
+            // Similar to IMO but for IOI
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 mb-1">Участников</div>
+                    <div class="text-3xl font-bold text-purple-600">${data.totalParticipants}</div>
+                    <div class="text-xs text-gray-500 mt-1">${data.participationYears}</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 mb-1">Золото</div>
+                    <div class="text-3xl font-bold text-yellow-500">${data.totalMedals.gold}</div>
+                    <div class="text-xs text-gray-500 mt-1">🥇 Лучшие результаты</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 mb-1">Серебро + Бронза</div>
+                    <div class="text-3xl font-bold text-gray-600">${data.totalMedals.silver + data.totalMedals.bronze}</div>
+                    <div class="text-xs text-gray-500 mt-1">🥈 ${data.totalMedals.silver} / 🥉 ${data.totalMedals.bronze}</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 mb-1">Лучший ранг</div>
+                    <div class="text-3xl font-bold text-green-600">#${data.bestRank}</div>
+                    <div class="text-xs text-gray-500 mt-1">${data.bestRankYear} год</div>
+                </div>
+            `;
+
+            document.getElementById('allParticipants').innerHTML = data.topScorers.map(p => `
+                <a href="/participant.html?olympiad=ioi&name=${encodeURIComponent(p.name)}" 
+                   class="block border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+                    <div class="font-semibold text-gray-900">${p.name}</div>
+                    <div class="text-sm text-gray-600">${p.nameRu}</div>
+                    <div class="flex flex-wrap gap-1 mt-2">
+                        ${p.medals.slice(0, 3).map(m => {
+                            const color = m.includes('Gold') ? 'yellow' : m.includes('Silver') ? 'gray' : 'orange';
+                            return `<span class="px-2 py-1 bg-${color}-100 text-${color}-700 text-xs rounded">${m}</span>`;
+                        }).join('')}
+                        ${p.medals.length > 3 ? `<span class="text-xs text-gray-500">+${p.medals.length - 3}</span>` : ''}
+                    </div>
+                </a>
+            `).join('');
+
+            if (data.notableYears) {
+                document.getElementById('bestYears').innerHTML = data.notableYears.map(y => `
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="font-semibold text-lg">IOI ${y.year} - ${y.location}</div>
+                                <div class="text-sm text-gray-600 mt-1">Ранг: #${y.bestRank}</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold">Медали:</div>
+                                <div class="text-sm">🥇 ${y.medals.gold} 🥈 ${y.medals.silver} 🥉 ${y.medals.bronze}</div>
+                            </div>
+                        </div>
+                        ${y.notes ? `<div class="text-sm text-gray-500 mt-2">${y.notes}</div>` : ''}
+                    </div>
+                `).join('');
+            }
+
+            document.getElementById('externalLinks').innerHTML = `
+                <a href="${olympiadInfo.officialSite}" target="_blank" class="block text-purple-600 hover:underline">
+                    🌐 ${olympiadInfo.officialSite}
+                </a>
+                <a href="${olympiadInfo.kazPageUrl}" target="_blank" class="block text-purple-600 hover:underline">
+                    🇰🇿 Результаты сборной Казахстана
+                </a>
+                <a href="https://stats.ioinformatics.org/olympiads/" target="_blank" class="block text-purple-600 hover:underline">
+                    📊 Все IOI по годам
+                </a>
+            `;
+        }
+
+        function renderGenericData(olympiadInfo) {
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="bg-white rounded-lg shadow p-4 col-span-full text-center">
+                    <div class="text-gray-600 mb-2">Детальные данные собираются</div>
+                    <div class="text-sm text-gray-500">Базовая информация доступна, полная статистика в разработке</div>
+                </div>
+            `;
+
+            document.getElementById('allParticipants').innerHTML = `
+                <div class="col-span-full text-center text-gray-500 py-8">
+                    Список участников в процессе сбора
+                </div>
+            `;
+
+            document.getElementById('bestYearsSection').style.display = 'none';
+
+            document.getElementById('externalLinks').innerHTML = `
+                ${olympiadInfo.officialSite ? `
+                    <a href="${olympiadInfo.officialSite}" target="_blank" class="block text-purple-600 hover:underline">
+                        🌐 Официальный сайт олимпиады
+                    </a>
+                ` : ''}
+                ${olympiadInfo.kazPageUrl ? `
+                    <a href="${olympiadInfo.kazPageUrl}" target="_blank" class="block text-purple-600 hover:underline">
+                        🇰🇿 Результаты Казахстана
+                    </a>
+                ` : ''}
+                <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <div class="text-sm text-gray-700">
+                        ℹ️ Если у вас есть данные по этой олимпиаде, пожалуйста, свяжитесь с нами для их добавления в базу.
+                    </div>
+                </div>
+            `;
+        }
+
+        loadOlympiad();
+    </script>
+</body>
+</html>
