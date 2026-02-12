@@ -90,15 +90,15 @@
         </div>
     </header>
 
-    <main class="container px-4 sm:px-8 py-8 md:py-12">
+    <main class="container max-w-5xl mx-auto px-4 py-8">
         
         <!-- Hero -->
-        <div class="mb-12">
-            <h1 class="text-3xl font-bold tracking-tight sm:text-4xl mb-3">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold tracking-tight mb-2">
                 База данных олимпиадников
             </h1>
-            <p class="text-muted-foreground">
-                13 олимпиад • 10 стран • 11,000+ участников • 2006-2026
+            <p class="text-sm text-muted-foreground">
+                500+ выдающихся участников • 13 олимпиад • 10 стран • 2006-2026
             </p>
         </div>
 
@@ -147,15 +147,25 @@
                     <option value="bronze">🥉 Бронза</option>
                 </select>
                 
-                <select id="filterYear" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-9 px-3 border border-input bg-background hover:bg-accent">
-                    <option value="">Все годы</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2020-2025">2020-2025</option>
-                    <option value="2015-2019">2015-2019</option>
-                    <option value="2010-2014">2010-2014</option>
-                </select>
+                <div class="flex items-center gap-2">
+                    <input 
+                        id="yearFrom" 
+                        type="number" 
+                        min="1992" 
+                        max="2026" 
+                        placeholder="С года"
+                        class="w-24 h-9 rounded-md text-sm border border-input bg-background px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    />
+                    <span class="text-muted-foreground">—</span>
+                    <input 
+                        id="yearTo" 
+                        type="number" 
+                        min="1992" 
+                        max="2026" 
+                        placeholder="По год"
+                        class="w-24 h-9 rounded-md text-sm border border-input bg-background px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    />
+                </div>
                 
                 <button id="resetFilters" class="inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-3 text-muted-foreground hover:text-foreground">
                     <i class="fas fa-redo mr-2"></i>Сбросить
@@ -166,8 +176,13 @@
         <!-- Results -->
         <div>
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-semibold" id="resultsTitle">Недавние медалисты</h2>
-                <div class="text-sm text-muted-foreground" id="resultsCount"></div>
+                <div>
+                    <h2 class="text-lg font-semibold" id="resultsTitle">Недавние медалисты</h2>
+                    <div class="text-sm text-muted-foreground mt-0.5" id="resultsCount"></div>
+                </div>
+                <button id="showMore" class="hidden text-sm text-muted-foreground hover:text-foreground">
+                    Показать ещё
+                </button>
             </div>
             
             <div id="noResults" class="hidden text-center py-12">
@@ -179,7 +194,7 @@
                 </button>
             </div>
             
-            <div id="results" class="grid gap-3">
+            <div id="results" class="space-y-2">
                 <!-- Will be populated -->
             </div>
         </div>

@@ -152,35 +152,34 @@ function performSearch() {
 document.getElementById('filterCountry').addEventListener('change', applyFilters);
 document.getElementById('filterOlympiad').addEventListener('change', applyFilters);
 document.getElementById('filterMedal').addEventListener('change', applyFilters);
-document.getElementById('filterYear').addEventListener('change', applyFilters);
+document.getElementById('yearFrom').addEventListener('input', applyFilters);
+document.getElementById('yearTo').addEventListener('input', applyFilters);
 document.getElementById('resetFilters').addEventListener('click', resetAll);
+
+let currentLimit = 100;
 
 function applyFilters() {
     const query = searchInput.value.toLowerCase();
     const country = document.getElementById('filterCountry').value;
     const olympiad = document.getElementById('filterOlympiad').value;
     const medal = document.getElementById('filterMedal').value;
-    const year = document.getElementById('filterYear').value;
+    const yearFrom = document.getElementById('yearFrom').value;
+    const yearTo = document.getElementById('yearTo').value;
     
     filteredParticipants = allParticipants.filter(p => {
         if (query && !p.name.toLowerCase().includes(query) && !p.nameRu.toLowerCase().includes(query)) return false;
         if (country && p.country !== country) return false;
         if (olympiad && p.olympiad !== olympiad) return false;
         if (medal && p.medal !== medal) return false;
-        if (year) {
-            if (year.includes('-')) {
-                const [start, end] = year.split('-').map(Number);
-                if (p.year < start || p.year > end) return false;
-            } else {
-                if (p.year !== parseInt(year)) return false;
-            }
-        }
+        if (yearFrom && p.year < parseInt(yearFrom)) return false;
+        if (yearTo && p.year > parseInt(yearTo)) return false;
         return true;
     });
     
-    const isSearching = query || country || olympiad || medal || year;
+    const isSearching = query || country || olympiad || medal || yearFrom || yearTo;
     document.getElementById('resultsTitle').textContent = isSearching ? 'Результаты поиска' : 'Недавние медалисты';
     
+    currentLimit = 100;
     renderResults();
 }
 
@@ -190,42 +189,47 @@ function resetAll() {
     document.getElementById('filterCountry').value = '';
     document.getElementById('filterOlympiad').value = '';
     document.getElementById('filterMedal').value = '';
-    document.getElementById('filterYear').value = '';
+    document.getElementById('yearFrom').value = '';
+    document.getElementById('yearTo').value = '';
     applyFilters();
 }
+
+document.getElementById('showMore').addEventListener('click', () => {
+    currentLimit += 100;
+    renderResults();
+});
 
 function renderResults() {
     const container = document.getElementById('results');
     const noResults = document.getElementById('noResults');
     const count = document.getElementById('resultsCount');
+    const showMoreBtn = document.getElementById('showMore');
     
-    count.textContent = `${filteredParticipants.length} участников`;
+    count.textContent = `Найдено: ${filteredParticipants.length}`;
     
     if (filteredParticipants.length === 0) {
-        container.classList.add('hidden');
+        container.innerHTML = '';
         noResults.classList.remove('hidden');
+        showMoreBtn.classList.add('hidden');
         return;
     }
     
-    container.classList.remove('hidden');
     noResults.classList.add('hidden');
     
-    const toShow = filteredParticipants.slice(0, 50);
+    const toShow = filteredParticipants.slice(0, currentLimit);
+    showMoreBtn.classList.toggle('hidden', toShow.length >= filteredParticipants.length);
     
     container.innerHTML = toShow.map(p => `
         <a href="/participant.html?olympiad=${p.olympiad.toLowerCase()}&name=${encodeURIComponent(p.name)}" 
-           class="flex items-center gap-4 p-4 rounded-lg border border-border bg-card card-hover">
-            <div class="text-2xl ${medalColors[p.medal]}">${medalEmojis[p.medal]}</div>
+           class="flex items-center gap-3 p-3 rounded-md border border-border hover:border-muted transition-colors">
+            <div class="text-xl ${medalColors[p.medal]}">${medalEmojis[p.medal]}</div>
             <div class="flex-1 min-w-0">
-                <div class="font-semibold">${p.name}</div>
-                <div class="text-sm text-muted-foreground">${p.nameRu}</div>
+                <div class="font-medium text-sm">${p.name}</div>
+                <div class="text-xs text-muted-foreground">${p.nameRu}</div>
             </div>
-            <div class="flex flex-col items-end gap-1">
-                <div class="flex items-center gap-2">
-                    <span class="text-xs px-2 py-1 rounded bg-secondary border border-border">${p.olympiad} ${p.year}</span>
-                    <span>${countryFlags[p.country]}</span>
-                </div>
-                ${p.score ? `<div class="text-xs text-muted-foreground">${p.score} pts</div>` : ''}
+            <div class="flex items-center gap-2 text-xs">
+                <span class="px-2 py-1 rounded bg-secondary border border-border whitespace-nowrap">${p.olympiad} ${p.year}</span>
+                <span class="text-base">${countryFlags[p.country]}</span>
             </div>
         </a>
     `).join('');
